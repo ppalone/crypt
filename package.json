@@ -1,0 +1,31 @@
+{
+  "name": "anonymous-blog",
+  "version": "1.0.0",
+  "description": "Secret Anonymous Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ppalone/anonymous-blog.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Pranjal Alone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ppalone/anonymous-blog/issues"
+  },
+  "homepage": "https://github.com/ppalone/anonymous-blog#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.16",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}
