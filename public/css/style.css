@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+a {
+    color: cyan;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.login-div {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 20px 10px;
+}
+
+.nav {
+    padding: 5px;
+}
+
+form div {
+    padding: 5px 0;
+}
+
+form div input {
+    height: 32px;
+    width: 100%;
+    padding: 5px;
+}
+
+.login-ip {
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+    .login-div {
+        width: 100%;
+    }
+}

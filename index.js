@@ -1,4 +1,10 @@
+// dotenv
+require('dotenv').config()
+
 const express = require('express');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -6,8 +12,43 @@ const PORT = process.env.PORT || 8000;
 const usersHandler = require('./routes/users');
 const blogsHandler = require('./routes/blogs');
 
+// Mongoose Config
+require('./config/db');
+
+// Passport
+require('./config/passport')(passport);
+
+// Error Resolved the app wasn't authenticating because I didn't add body parser middleware
+// Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Set view engine
 app.set('view engine', 'ejs');
+// Tell express to use the public directory
+app.use(express.static(__dirname + '/public'));
+
+// Express Sessions
+app.use(session({
+    secret: 'code',
+    resave: true,
+    saveUninitialized: true,
+}));
+
+// Passport 
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Global Variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
 
 app.get('/', (req, res) => res.render('index.ejs'));
 app.use('/users', usersHandler);

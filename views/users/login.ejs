@@ -1,7 +1,53 @@
 <%- include ('../partials/header.ejs') %>
 
     <div class="container">
-        <h1>LOGIN PAGE</h1>
+
+        <div class="nav">
+            <div id="nav-header">
+                <h2>Anonymous.</h2>
+            </div>
+        </div>
+
+        <div class="login-div">
+            <form action="/users/login" method="POST">
+                <h2>LOGIN</h2>
+                <%- include ('./partials/messages.ejs') %>
+                <div>
+                    <label for="email">Email 📧</label>
+                </div>
+                <div>
+                        <input 
+                            class="login-ip"
+                            type="email"
+                            name="email"
+                            placeholder="email"
+                            autocomplete="off"
+                            required
+                        >
+                </div>
+                    <div>
+                        <label for="password">Password 🔒</label>
+                    </div>
+                    <div>
+                        <input 
+                            class="login-ip"
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <input 
+                            type="submit"
+                            value="LOGIN"
+                        >
+                    </div>
+                    <div>
+                        Not registered yet? Register <a href="/users/register">here</a>
+                    </div>
+            </form>
+        </div>
     </div>
 
 <%- include ('../partials/footer.ejs') %>
