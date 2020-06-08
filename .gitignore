@@ -1,2 +1,11 @@
 # npm dependencies
 node_modules
+
+# scripts
+scripts
+
+# Todos
+TODO
+
+# environmental variables
+.env
