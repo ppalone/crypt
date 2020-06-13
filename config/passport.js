@@ -10,16 +10,11 @@ module.exports = (passport) => {
                     // console.log('Is is ever triggered?');
                     if (!user) return done(null, false, { message: "This Email is not registered" });
                     
-                    /*
-                     * If user is found check password    
-                     */
-                    bcrypt.compare(password, user.password, (err, isMatch) => {
-                        // Handle error
-                        if (err) throw err;
-
+                    user.comparePassword(password, (err, isMatch) => {
+                        if (err) res.status(500).send(err);
                         if (isMatch) return done(null, user);
                         else return done(null, false, { message: "Password is incorrect" });
-                    })
+                    });
                 })
                 .catch(err => console.log(err)); 
         })
