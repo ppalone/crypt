@@ -1,10 +1,13 @@
 const router = require('express').Router();
 const ensureAuthenticated = require('../middlewares/auth').ensureAuthenticated;
+const blogsController = require('../controllers/blogs/blogs');
 
 router.use(ensureAuthenticated);
 
 router
-    .get('/blogs', (req, res) => res.render('blogs/blogs'));
+    .get('/blogs', blogsController.getAllBlogs)
+    .post('/blogs', blogsController.createBlog);
+    // .get('/blogs/new', blogsController)
     // .post('/blogs', (req, res) => res.send('Post request to /blogs'));
 
 module.exports = router;

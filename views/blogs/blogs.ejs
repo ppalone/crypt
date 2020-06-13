@@ -3,6 +3,12 @@
 <div class="container">
     <h1>WELCOME!!</h1>
     <a href="/users/logout">LOGOUT</a>
+    <div class="blogs" style="color: white;">
+        <% blogs.forEach(blog => { %>
+            <div><%= blog.title %></div>
+            <p><%= blog.body %></p>
+        <% }) %>
+    </div>
 </div>
 
 <%-  include ('../partials/footer.ejs') %>
