@@ -2,18 +2,22 @@
 
     <div class="container">
 
-        <div class="nav">
-            <div id="nav-header">
-                <h2>Anonymous.</h2>
+        <nav>
+            <div class="nav-header">
+                <h2>Crypt.</h2>
             </div>
-        </div>
+        </nav>
 
         <div class="login-div">
+
+            <div class="login-txt">
+                <h3>LOGIN</h3>
+            </div>
+
             <form action="/users/login" method="POST">
-                <h2>LOGIN</h2>
                 <%- include ('./partials/messages.ejs') %>
                 <div>
-                    <label for="email">Email 📧</label>
+                    <label for="email">Email</label>
                 </div>
                 <div>
                         <input 
@@ -26,7 +30,7 @@
                         >
                 </div>
                     <div>
-                        <label for="password">Password 🔒</label>
+                        <label for="password">Password</label>
                     </div>
                     <div>
                         <input 
@@ -38,7 +42,8 @@
                         >
                     </div>
                     <div>
-                        <input 
+                        <input
+                            class="login-sub"
                             type="submit"
                             value="LOGIN"
                         >

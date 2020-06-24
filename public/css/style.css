@@ -5,59 +5,72 @@
 html, body {
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    background-color: #000000;
+    font-family: 'Source Serif Pro', serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
 
-a {
-    color: cyan;
-}
-
 .container {
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
 }
 
-.login-div {
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 10%;
-    padding: 20px 10px;
+
+/* Navigation Bar */
+.nav-header {
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    background-color: black;
+    color: white;
+    padding: 4px;
+    margin-top: 5px;
+    width: fit-content;
+    border-radius: 4px;
 }
 
-.nav {
-    padding: 5px;
-}
-
-form div {
+/* LOGIN FORM */
+form > div {
     padding: 5px 0;
 }
 
-form div input {
-    height: 32px;
-    width: 100%;
-    padding: 5px;
+.login-txt {
+    font-size: 18px;
+}
+
+.login-div {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 10%;
 }
 
 .login-ip {
-    border: none;
-    border-bottom: 1px solid white;
-    color: white;
-    outline: none;
-    background: transparent;
+    height: 40px;
+    font-family: 'Source Serif Pro', serif;
     font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    outline: none;
 }
 
-@media (max-width: 600px) {
+.login-sub {
+    height: 32px;
+    font-size: 16px;
+    font-family: "Source Serif Pro", serif;
+    width: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
     .container {
-        width: 100%;
+        width: 95%;
     }
     .login-div {
-        width: 100%;
+        margin-top: 5%;
+        padding: 10px;
+    }
+    nav {
+        padding: 5px 10px;
     }
 }
