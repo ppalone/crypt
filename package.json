@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ppalone/anonymous-blog.git"
+    "url": "git+https://github.com/ppalone/crypt.git"
   },
   "keywords": [
     "nodejs"
@@ -17,9 +17,9 @@
   "author": "Pranjal Alone",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ppalone/anonymous-blog/issues"
+    "url": "https://github.com/ppalone/crypt/issues"
   },
-  "homepage": "https://github.com/ppalone/anonymous-blog#readme",
+  "homepage": "https://github.com/ppalone/crypt#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
