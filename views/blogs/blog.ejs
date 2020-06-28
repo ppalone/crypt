@@ -6,14 +6,11 @@
 
     <%- include ('./partials/navbar.ejs') %> 
     
-    <div class="write-blog">
-        <a href="/blogs/new">Write</a>
+    <div class="blog-title">
+        <h2><%= blog.title %></h2>
+        <p><%= blog.post %></p>
     </div>
-    <div class="blogs">
-        <% blogs.forEach(blog => { %>
-            <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-        <% }) %>
-    </div>
+
 </div>
 
 <%-  include ('../partials/footer.ejs') %>

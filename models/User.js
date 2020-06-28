@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const SALT_FACTOR = 10;
 
 const userSchema = mongoose.Schema({
@@ -31,29 +31,32 @@ const userSchema = mongoose.Schema({
  * Hash password before saving
  */
 userSchema.pre('save', function (next) {
-    // const user = this;
-    // console.log(this);
-    // next();
+    let user = this;
 
-    bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
-        if (err) return next(err);
+    // Password Incorrect issue resolved using this line
+    if (!user.isModified('password')) return next();
 
-        bcrypt.hash(this.password, salt, (err, hash) => {
-            if (err) return next(err);
-            this.password = hash;
-            next();
-        });
-    });
+    bcrypt.genSalt(SALT_FACTOR)
+        .then(salt => {
+            bcrypt.hash(user.password, salt)
+                .then(hash => {
+                    user.password = hash;
+                    next()
+                })
+                .catch(err => next(err));
+        })
+        .catch(err => next(err));
 });
 
 /**
  * Add method to user schema
  */
 userSchema.methods.comparePassword = function (password, callback) {
-    bcrypt.compare(password, this.password, function(err, isMatch) {
-        if (err) callback(err);
-        callback(null, isMatch);
-    });
+    bcrypt.compare(password, this.password)
+        .then(isMatch => {
+            callback(null, isMatch);
+        })
+        .catch(err => callback(err))
 };
 
 

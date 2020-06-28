@@ -19,6 +19,14 @@ h1, h2, h3, h4, h5, h6, p {
 
 
 /* Navigation Bar */
+nav {
+    /* width: 100%; */
+    display: flex;
+    /* justify-content: center; */
+    /* justify-items: center; */
+    align-items: center;
+}
+
 .nav-header {
     font-size: 18px;
     letter-spacing: 0.8px;
@@ -45,7 +53,7 @@ form > div {
     margin-top: 10%;
 }
 
-.login-ip {
+.login-ip, .blog-ip {
     height: 40px;
     font-family: 'Source Serif Pro', serif;
     font-size: 16px;
@@ -71,6 +79,33 @@ form > div {
         padding: 10px;
     }
     nav {
-        padding: 5px 10px;
+        /* padding: 5px 10px; */
     }
+}
+
+/* Blogs Page */
+#logout {
+    margin-left: auto;
+}
+.write-blog {
+    /* padding: 10px 0; */
+    margin-top: 15px;
+}
+
+/* Add Post */
+.add-blog-header {
+    margin: 10px 0;
+}
+
+#post {
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    font-family: "Source Serif Pro", serif;
+    padding: 5px;
+}
+
+.post-sub {
+    width: 100px;
+    height: 32px;
 }

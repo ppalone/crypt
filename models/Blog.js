@@ -5,7 +5,7 @@ const blogSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    body: {
+    post: {
         type: String
     },
     createdAt: {
