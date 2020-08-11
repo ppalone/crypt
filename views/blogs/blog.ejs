@@ -1,16 +1,15 @@
-<%-  include ('../partials/header.ejs') %>
+<%- include ('../partials/header.ejs') %>
 
 <div class="container">
-    <!-- <h1>WELCOME!!</h1>
-    <a href="/users/logout">LOGOUT</a> -->
+	<%- include ('../partials/navbar.ejs') %>
 
-    <%- include ('./partials/navbar.ejs') %> 
-    
-    <div class="blog-title">
-        <h2><%= blog.title %></h2>
-        <p><%= blog.post %></p>
-    </div>
+	<div class="back-div">
+		<a href="/blogs">All Blogs</a>
+	</div>
 
+	<div class="blog-title">
+		<h2><%= blog.title %></h2>
+		<div class="blog-post-body"><%= blog.post %></div>
+	</div>
 </div>
-
-<%-  include ('../partials/footer.ejs') %>
+<%- include ('../partials/footer.ejs') %>

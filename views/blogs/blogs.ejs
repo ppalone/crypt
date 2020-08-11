@@ -1,19 +1,30 @@
-<%-  include ('../partials/header.ejs') %>
+<%- include ('../partials/header.ejs') %>
 
 <div class="container">
-    <!-- <h1>WELCOME!!</h1>
-    <a href="/users/logout">LOGOUT</a> -->
+	<%- include ('../partials/navbar.ejs') %>
 
-    <%- include ('./partials/navbar.ejs') %> 
-    
-    <div class="write-blog">
-        <a href="/blogs/new">Write</a>
-    </div>
-    <div class="blogs">
-        <% blogs.forEach(blog => { %>
-            <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-        <% }) %>
-    </div>
+	<div class="menu">
+		<div>
+			<a href="/blogs/new">Write</a>
+		</div>
+		<div>
+			<a href="/profile">Profile</a>
+		</div>
+		<div>
+			<a href="/users/logout">Logout</a>
+		</div>
+	</div>
+	<div class="blogs">
+		<% blogs.forEach(blog => { %>
+		<div class="blog-div">
+			<a href="/blogs/<%= blog._id %>">
+				<h2><%= blog.title %></h2>
+			</a>
+			<span><%= moment(blog.createdAt).format("D MMM, YYYY") %></span>
+			<p><%= blog.post.substr(0, 100) %> . . .</p>
+		</div>
+		<% }) %>
+	</div>
 </div>
 
-<%-  include ('../partials/footer.ejs') %>
+<%- include ('../partials/footer.ejs') %>

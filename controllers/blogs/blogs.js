@@ -5,7 +5,7 @@ module.exports = {
     getAllBlogs: (req, res) => {
         User.findOne({ _id: req.user._id }).populate('blogs').exec()
             .then(user => {
-                console.log(user);
+                // console.log(user);
                 res.render('./blogs/blogs', {
                     blogs: user.blogs
                 });
@@ -54,9 +54,11 @@ module.exports = {
                  * Check if the blog with given id exists in user's blogs
                  */
                 let found = user.blogs.includes(id);
-                console.log(found);
+                // console.log(found);
                 if (!found) {
-                    res.send('Access denied!');
+                    res
+                        .status(404).
+                        send('Page not found!');
                 }
                 Blog
                     .findById(id)

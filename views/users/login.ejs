@@ -1,58 +1,46 @@
 <%- include ('../partials/header.ejs') %>
 
-    <div class="container">
+<div class="container">
+	<%- include ('../partials/navbar.ejs') %>
 
-        <nav>
-            <div class="nav-header">
-                <h2>Crypt.</h2>
-            </div>
-        </nav>
+	<div class="login-div">
+		<div class="login-txt">
+			<h3>LOGIN</h3>
+		</div>
 
-        <div class="login-div">
-
-            <div class="login-txt">
-                <h3>LOGIN</h3>
-            </div>
-
-            <form action="/users/login" method="POST">
-                <%- include ('./partials/messages.ejs') %>
-                <div>
-                    <label for="email">Email</label>
-                </div>
-                <div>
-                        <input 
-                            class="login-ip"
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                            autocomplete="off"
-                            required
-                        >
-                </div>
-                    <div>
-                        <label for="password">Password</label>
-                    </div>
-                    <div>
-                        <input 
-                            class="login-ip"
-                            type="password"
-                            name="password"
-                            placeholder="password"
-                            required
-                        >
-                    </div>
-                    <div>
-                        <input
-                            class="login-sub"
-                            type="submit"
-                            value="LOGIN"
-                        >
-                    </div>
-                    <div>
-                        Not registered yet? Register <a href="/users/register">here</a>
-                    </div>
-            </form>
-        </div>
-    </div>
+		<form action="/users/login" method="POST">
+			<%- include ('./partials/messages.ejs') %>
+			<div>
+				<label for="email">Email</label>
+			</div>
+			<div>
+				<input
+					class="login-ip"
+					type="email"
+					name="email"
+					placeholder="email"
+					autocomplete="off"
+					required
+				/>
+			</div>
+			<div>
+				<label for="password">Password</label>
+			</div>
+			<div>
+				<input
+					class="login-ip"
+					type="password"
+					name="password"
+					placeholder="password"
+					required
+				/>
+			</div>
+			<div>
+				<input class="login-sub" type="submit" value="LOGIN" />
+			</div>
+			<div>Not registered yet? Register <a href="/users/register">here</a></div>
+		</form>
+	</div>
+</div>
 
 <%- include ('../partials/footer.ejs') %>

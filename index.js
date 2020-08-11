@@ -1,5 +1,5 @@
 // dotenv
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
@@ -27,15 +27,19 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 // Tell express to use the public directory
 app.use(express.static(__dirname + '/public'));
+// Momentjs
+app.locals.moment = require('moment');
 
 // Express Sessions
-app.use(session({
-    secret: 'code',
-    resave: true,
-    saveUninitialized: true,
-}));
+app.use(
+	session({
+		secret: 'code',
+		resave: true,
+		saveUninitialized: true,
+	})
+);
 
-// Passport 
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -44,10 +48,10 @@ app.use(flash());
 
 // Global Variables
 app.use((req, res, next) => {
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    next();
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
 });
 
 app.get('/', (req, res) => res.render('index.ejs'));
