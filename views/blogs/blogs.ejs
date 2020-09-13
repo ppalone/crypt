@@ -14,17 +14,31 @@
 			<a href="/users/logout">Logout</a>
 		</div>
 	</div>
+
+	<!-- <div id="filters">
+		FILTERS
+	</div> -->
+
+	<% if (blogs.length > 0) { %>
 	<div class="blogs">
 		<% blogs.forEach(blog => { %>
 		<div class="blog-div">
-			<a href="/blogs/<%= blog._id %>">
-				<h2><%= blog.title %></h2>
-			</a>
-			<span><%= moment(blog.createdAt).format("D MMM, YYYY") %></span>
+			<h2>
+				<a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+			</h2>
+			<span><%= moment(blog.createdAt).format("MMM D, YYYY") %></span>
 			<p><%= blog.post.substr(0, 100) %> . . .</p>
 		</div>
 		<% }) %>
 	</div>
+	<% } else { %>
+	<div style="text-align: center; margin-top: 10%;">
+		<h2>No Blogs found</h2>
+		<div style="margin-top: 10px;">
+			Create one <a href="/blogs/new">here</a>
+		</div>
+	</div>
+	<% } %>
 </div>
 
 <%- include ('../partials/footer.ejs') %>

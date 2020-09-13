@@ -2,62 +2,80 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT_FACTOR = 10;
 
-const userSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true
+      type: String,
+      unique: true,
+      required: true,
     },
     password: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     isVerified: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
-    blogs: [ 
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Blog'
-        }
-    ]
-});
+    blogs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Blog',
+      },
+    ],
+    expireAt: {
+      type: Date,
+      default: Date.now,
+      expires: 60 * 60 * 12,
+    },
+    passwordResetToken: {
+      type: String,
+      default: '',
+    },
+    passwordTokenExpiry: {
+      type: Date,
+    },
+  },
+  { timestamps: true }
+);
 
 /**
  * Hash password before saving
  */
-userSchema.pre('save', function (next) {
-    let user = this;
+UserSchema.pre('save', function (next) {
+  let user = this;
 
-    // Password Incorrect issue resolved using this line
-    if (!user.isModified('password')) return next();
+  // Password Incorrect issue resolved using this line
+  if (!user.isModified('password')) return next();
 
-    bcrypt.genSalt(SALT_FACTOR)
-        .then(salt => {
-            bcrypt.hash(user.password, salt)
-                .then(hash => {
-                    user.password = hash;
-                    next()
-                })
-                .catch(err => next(err));
+  bcrypt
+    .genSalt(SALT_FACTOR)
+    .then((salt) => {
+      bcrypt
+        .hash(user.password, salt)
+        .then((hash) => {
+          user.password = hash;
+          next();
         })
-        .catch(err => next(err));
+        .catch((err) => next(err));
+    })
+    .catch((err) => next(err));
 });
 
 /**
  * Add method to user schema
  */
-userSchema.methods.comparePassword = function (password, callback) {
-    bcrypt.compare(password, this.password)
-        .then(isMatch => {
-            callback(null, isMatch);
-        })
-        .catch(err => callback(err))
+UserSchema.methods.comparePassword = function (password, callback) {
+  bcrypt
+    .compare(password, this.password)
+    .then((isMatch) => {
+      callback(null, isMatch);
+    })
+    .catch((err) => callback(err));
 };
 
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);

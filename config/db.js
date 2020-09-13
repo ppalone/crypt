@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
-// const URI = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@crypt.eqhl0.mongodb.net/<dbname>?retryWrites=true&w=majority`
-const URI = 'mongodb://localhost/crypt';
+const URI = process.env.MONGO_URI;
 
-mongoose.connect(URI, {
+mongoose
+  .connect(URI, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
-})
-    .then(() => console.log('MongoDB connected!'))
-    .catch(err => console.log(err));
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('MongoDB connected!'))
+  .catch((err) => console.log(err));
 
 module.exports = mongoose;

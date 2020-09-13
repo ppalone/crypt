@@ -9,3 +9,6 @@ TODO
 
 # environmental variables
 .env
+
+# vscode settings
+.vscode

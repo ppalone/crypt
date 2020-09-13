@@ -3,6 +3,8 @@ const themeBall = document.querySelector('.ball');
 const switchTheme = document.querySelector('.switch-theme-div');
 let theme;
 
+document.body.style.transition = 'none';
+
 if (localStorage.getItem('crypt.theme')) {
 	theme = localStorage.getItem('crypt.theme');
 } else {
@@ -20,6 +22,7 @@ switchTheme.style.display = 'flex';
 
 themeCheckbox.addEventListener('change', () => {
 	changeTheme();
+	document.body.style.transition = 'background 500ms ease-in';
 });
 
 const changeTheme = () => {

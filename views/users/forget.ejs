@@ -5,10 +5,10 @@
 
   <div class="login-div">
     <div class="login-txt">
-      <h3>LOGIN</h3>
+      <h3>FORGET PASSWORD</h3>
     </div>
 
-    <form action="/users/login" method="POST">
+    <form action="/users/forget" method="POST">
       <%- include ('./partials/messages.ejs') %>
       <div>
         <label for="email">Email</label>
@@ -24,24 +24,11 @@
         />
       </div>
       <div>
-        <label for="password">Password</label>
+        <input class="login-sub" type="submit" value="Send Link" />
       </div>
       <div>
-        <input
-          class="login-ip"
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
+        An email will be sent to your registered email with a reset link
       </div>
-      <div>
-        <input class="login-sub" type="submit" value="LOGIN" />
-      </div>
-      <div style="text-align: right;">
-        <a href="/users/forget">Forget Password</a>
-      </div>
-      <div>Not registered yet? Register <a href="/users/register">here</a></div>
     </form>
   </div>
 </div>
