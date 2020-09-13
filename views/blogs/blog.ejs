@@ -1,0 +1,62 @@
+<%- include ('../partials/header.ejs') %>
+
+<div class="container">
+  <%- include ('../partials/navbar.ejs') %>
+
+  <div class="menu">
+    <div>
+      <a href="/blogs">All Blogs</a>
+    </div>
+    <div>
+      <a href="/blogs/<%= blog._id %>/edit">Edit</a>
+    </div>
+    <div>
+      <a id="delete-blog" href="javascript:void(0)">Delete</a>
+    </div>
+  </div>
+
+  <!-- Model -->
+  <div id="model-wrapper">
+    <div id="delete-model">
+      <div class="model-content">
+        Are you sure you want to delete this blog?
+      </div>
+      <div>
+        <a href="/blogs/<%= blog._id %>/delete?_method=DELETE">YES</a>
+        <a id="cancel-model" href="javascript:void(0)">NO</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-title">
+    <h2><%= blog.title %></h2>
+  </div>
+
+  <div class="blog-date">
+    <span><%= moment(blog.createdAt).format("MMM D, YYYY") %></span>
+  </div>
+
+  <div>
+    <p class="blog-post-body"><%= blog.post %></p>
+  </div>
+</div>
+<script>
+  const modal = document.getElementById('model-wrapper');
+  const cancel = document.getElementById('cancel-model');
+  const deleteTrigger = document.getElementById('delete-blog');
+
+  deleteTrigger.onclick = () => {
+    modal.style.display = 'flex';
+  };
+
+  cancel.onclick = () => {
+    modal.style.display = 'none';
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+</script>
+<%- include ('../partials/footer.ejs') %>

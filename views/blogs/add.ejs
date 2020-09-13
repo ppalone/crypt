@@ -1,0 +1,42 @@
+<%- include ('../partials/header.ejs') %>
+
+<div class="container">
+	<%- include ('../partials/navbar.ejs') %>
+
+	<div class="add-blog-header">
+		<h3>ADD BLOG</h3>
+	</div>
+
+	<form action="/blogs" method="POST">
+		<div>
+			<label for="title">Title</label>
+		</div>
+		<div>
+			<input
+				class="blog-ip"
+				type="title"
+				name="title"
+				placeholder="Title"
+				autocomplete="off"
+				required
+			/>
+		</div>
+		<div>
+			<label for="post">Post</label>
+		</div>
+		<div>
+			<textarea
+				id="post"
+				name="post"
+				placeholder="Write your Post here . . ."
+				rows="10"
+				required
+			></textarea>
+		</div>
+		<div>
+			<input class="post-sub" type="submit" value="ADD POST" />
+		</div>
+	</form>
+</div>
+
+<%- include ('../partials/footer.ejs') %>
