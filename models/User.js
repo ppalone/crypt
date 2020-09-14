@@ -30,7 +30,7 @@ const UserSchema = mongoose.Schema(
     expireAt: {
       type: Date,
       default: Date.now,
-      expires: 60 * 60 * 12,
+      expires: 60 * 60 * 6,
     },
     passwordResetToken: {
       type: String,
