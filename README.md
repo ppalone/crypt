@@ -2,7 +2,7 @@
 A secret anonymous 🕵🏻 place where you can only view your blogs 📝.
 
 ### How to run on your local machine?
-1. Make sure have node installed on your machine.
+1. Make sure you have node installed on your machine.
 2. Clone the repository and install the dependenies
 ```
 npm install
