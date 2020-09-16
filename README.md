@@ -2,7 +2,7 @@
 A secret anonymous 🕵🏻 place where you can only view your blogs 📝.
 
 ### How to run on your local machine?
-Make sure you have node installed on your machine.
+Make sure you have node installed on your machine.  
 Clone the repository and install the dependenies
 ```
 npm install
@@ -18,6 +18,66 @@ DOMAIN_URL - your localhost port eg. http://localhost:8000
 Run the project
 ```
 npm run start
+```
+
+### Project folder structure
+```
+.
+├── config
+│   ├── db.js
+│   └── passport.js
+├── controllers
+│   ├── blogs
+│   │   └── blogs.js
+│   └── users
+│       ├── login.js
+│       ├── logout.js
+│       ├── password.js
+│       └── register.js
+├── index.js
+├── middlewares
+│   └── auth.js
+├── models
+│   ├── Blog.js
+│   ├── Token.js
+│   └── User.js
+├── package.json
+├── package-lock.json
+├── public
+│   ├── css
+│   │   └── style.css
+│   └── js
+│   └── app.js
+├── README.md
+├── routes
+│   ├── blogs.js
+│   ├── profile.js
+│   ├── users.js
+│   └── verify.js
+├── services
+│   └── sendgrid.js
+└── views
+├── blogs
+│   ├── add.ejs
+│   ├── blog.ejs
+│   ├── blogs.ejs
+│   └── edit.ejs
+├── errors
+│   └── 404.ejs
+├── index.ejs
+├── partials
+│   ├── footer.ejs
+│   ├── header.ejs
+│   └── navbar.ejs
+├── profile
+│   └── profile.ejs
+└── users
+├── forget.ejs
+├── login.ejs
+├── partials
+│   └── messages.ejs
+└── register.ejs
+
 ```
 
 ### Contributing 💜
