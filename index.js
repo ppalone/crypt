@@ -9,9 +9,13 @@ const methodOverride = require('method-override');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Middlewares
+const forwardAuthenticated = require('./middlewares/auth').forwardAuthenticated;
+
 // Routes Handlers
 const usersHandler = require('./routes/users');
 const blogsHandler = require('./routes/blogs');
+const profileHandler = require('./routes/profile');
 const verificationHandler = require('./routes/verify');
 
 // Mongoose Config
@@ -68,9 +72,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => res.render('index.ejs'));
+app.get('/', forwardAuthenticated, (req, res) => res.render('index.ejs'));
 app.use('/users', usersHandler);
 app.use('/blogs', blogsHandler);
+app.use(profileHandler);
 app.use(verificationHandler);
 
 app.get('*', (req, res) => {
