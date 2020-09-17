@@ -388,24 +388,17 @@ form > div {
   width: 100%;
   margin: 10px 0;
   overflow: hidden;
+  text-align: center;
 }
 
 .g-recaptcha {
-  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.g-recaptcha iframe {
-  width: 100% !important;
-}
-
-.g-recaptcha div {
-  width: 100% !important;
-}
-
-.rc-anchor-normal {
-  width: auto !important;
-}
-
-.login-message {
-  margin: 10px 0;
+@media (max-width: 360px) {
+  .g-recaptcha {
+    transform: scale(0.9);
+  }
 }
