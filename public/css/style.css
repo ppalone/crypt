@@ -382,3 +382,30 @@ form > div {
 #delete-model div a {
   padding: 0 10px;
 }
+
+/* Google recaptcha */
+.recaptcha-div {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.g-recaptcha {
+  width: 100% !important;
+}
+
+.g-recaptcha iframe {
+  width: 100% !important;
+}
+
+.g-recaptcha div {
+  width: 100% !important;
+}
+
+.rc-anchor-normal {
+  width: auto !important;
+}
+
+.login-message {
+  margin: 10px 0;
+}

@@ -1,17 +1,15 @@
 <% if (error != '') { %>
-<div class="login-message">
-	<%= error %>
-</div>
+<div class="login-message"><%= error %></div>
 <% } %>
 
 <% if (success_msg != '') { %>
-<div class="login-message">
-	<%= success_msg %>
-</div>
+<div class="login-message"><%= success_msg %></div>
 <% } %>
 
 <% if (error_msg != '') { %>
-<div class="login-message">
-	<%= error_msg %>
-</div>
+<div class="login-message"><%= error_msg %></div>
+<% } %>
+
+<% if (typeof (errors) !== "undefined") { %>
+<div class="login-message"><%= errors %></div>
 <% } %>
