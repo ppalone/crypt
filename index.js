@@ -34,7 +34,7 @@ app.set('view engine', 'ejs');
 // Tell express to use the public directory
 app.use(express.static(__dirname + '/public'));
 // Momentjs
-app.locals.moment = require('moment');
+app.locals.dateFormat = require('./utils/dateFormatter');
 
 // Express Sessions
 app.use(

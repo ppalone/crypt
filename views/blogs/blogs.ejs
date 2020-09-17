@@ -26,7 +26,7 @@
 			<h2>
 				<a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
 			</h2>
-			<span><%= moment(blog.createdAt).format("MMM D, YYYY") %></span>
+			<span><%= dateFormat(blog.createdAt) %></span>
 			<p><%= blog.post.substr(0, 100) %> . . .</p>
 		</div>
 		<% }) %>
