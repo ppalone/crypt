@@ -32,12 +32,17 @@
     <h2><%= blog.title %></h2>
   </div>
 
-  <div class="blog-date">
-    <span><%= dateFormat(blog.createdAt) %></span>
+  <div class="blog-post-body">
+    <p><%= blog.post %></p>
   </div>
 
-  <div>
-    <p class="blog-post-body"><%= blog.post %></p>
+  <div class="blog-post-info">
+    <span
+      ><%= formatter.timeFormat(blog.createdAt) %>, <%=
+      formatter.dateFormat(blog.createdAt) %></span
+    >
+    <% if (!formatter.compareTime(blog.createdAt, blog.updatedAt)) { %>
+    <%=`(Updated)` %> <% } %>
   </div>
 </div>
 <script>

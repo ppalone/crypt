@@ -26,8 +26,8 @@
 			<h2>
 				<a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
 			</h2>
-			<span><%= dateFormat(blog.createdAt) %></span>
-			<p><%= blog.post.substr(0, 100) %> . . .</p>
+			<span><%= formatter.dateFormat(blog.createdAt) %></span>
+			<p><%= blog.post.substr(0, 50) %> . . .</p>
 		</div>
 		<% }) %>
 	</div>

@@ -8,7 +8,7 @@
   --global-font-family: 'PT Serif', serif;
   --text-links: rgb(255, 71, 101);
   --dark-text-primary: #000000;
-  --dark-text-secondary: #222222e0;
+  --dark-text-secondary: #2a2a2a;
   --dark-bg-primary: #ffffff;
 }
 
@@ -342,13 +342,18 @@ form > div {
   padding: 10px 0;
 }
 
-.blog-date {
-  color: var(--dark-text-secondary);
-  padding-bottom: 10px;
+.blog-post-body {
+  border-bottom: 1px solid gray;
 }
 
-.blog-post-body {
+.blog-post-body p {
   white-space: pre-wrap;
+  margin-bottom: 10px;
+}
+
+.blog-post-info {
+  text-align: right;
+  color: var(--dark-text-secondary);
 }
 
 /* MODEL */
@@ -397,7 +402,7 @@ form > div {
   align-items: center;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 320px) {
   .g-recaptcha {
     transform: scale(0.9);
   }
