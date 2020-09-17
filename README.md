@@ -47,7 +47,7 @@ npm run start
 │   ├── css
 │   │   └── style.css
 │   └── js
-│   └── app.js
+│       └── app.js
 ├── README.md
 ├── routes
 │   ├── blogs.js
@@ -57,27 +57,26 @@ npm run start
 ├── services
 │   └── sendgrid.js
 └── views
-├── blogs
-│   ├── add.ejs
-│   ├── blog.ejs
-│   ├── blogs.ejs
-│   └── edit.ejs
-├── errors
-│   └── 404.ejs
-├── index.ejs
-├── partials
-│   ├── footer.ejs
-│   ├── header.ejs
-│   └── navbar.ejs
-├── profile
-│   └── profile.ejs
-└── users
-├── forget.ejs
-├── login.ejs
-├── partials
-│   └── messages.ejs
-└── register.ejs
-
+    ├── blogs
+    │   ├── add.ejs
+    │   ├── blog.ejs
+    │   ├── blogs.ejs
+    │   └── edit.ejs
+    ├── errors
+    │   └── 404.ejs
+    ├── index.ejs
+    ├── partials
+    │   ├── footer.ejs
+    │   ├── header.ejs
+    │   └── navbar.ejs
+    ├── profile
+    │   └── profile.ejs
+    └── users
+        ├── forget.ejs
+        ├── login.ejs
+        ├── partials
+        │   └── messages.ejs
+        └── register.ejs
 ```
 
 ### Contributing 💜
