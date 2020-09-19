@@ -33,8 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 // Tell express to use the public directory
 app.use(express.static(__dirname + '/public'));
-// Momentjs
-app.locals.formatter = require('./utils/formatter');
+
+app.locals.date = require('./utils/date');
 
 // Express Sessions
 app.use(

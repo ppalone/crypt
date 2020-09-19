@@ -38,10 +38,10 @@
 
   <div class="blog-post-info">
     <span
-      ><%= formatter.timeFormat(blog.createdAt) %>, <%=
-      formatter.dateFormat(blog.createdAt) %></span
+      ><%= date.timeFormat(blog.createdAt) %>, <%=
+      date.dateFormat(blog.createdAt) %></span
     >
-    <% if (!formatter.compareTime(blog.createdAt, blog.updatedAt)) { %>
+    <% if (!date.compareTime(blog.createdAt, blog.updatedAt)) { %>
     <%=`(Updated)` %> <% } %>
   </div>
 </div>

@@ -5,7 +5,7 @@
 }
 
 :root {
-  --global-font-family: 'PT Serif', serif;
+  --global-font-family: 'PT Serif', san-serif;
   --text-links: rgb(255, 71, 101);
   --dark-text-primary: #000000;
   --dark-text-secondary: #2a2a2a;
@@ -354,8 +354,9 @@ form > div {
 .blog-post-info {
   text-align: right;
   color: var(--dark-text-secondary);
+  padding: 5px 0;
+  font-size: 15px;
 }
-
 /* MODEL */
 /* https://stackoverflow.com/questions/1725759/css-how-to-center-box-div-element-directly-in-center*/
 #model-wrapper {

@@ -17,10 +17,10 @@ module.exports = {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
     let date = new Date(isoString);
 
-    let h = date.getHours();
-    let hh = (h % 12 < 10 && h % 12 !== 0) ? '0' + h : h;
-    let suffix = (h < 12) ? 'AM' : 'PM';
-    let mm = date.getMinutes();
+    let h = ((date.getHours() + 24) % 12) || 12;
+    let hh = (h < 10) ? '0' + h : h;
+    let suffix = (date.getHours() < 12) ? 'AM' : 'PM';
+    let mm = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
     let Day = days[date.getDay()];
 
     return `${hh}:${mm} ${suffix}, ${Day}`;
