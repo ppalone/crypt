@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const URI = process.env.MONGO_URI;
 
 mongoose
-  .connect('mongodb://localhost/crypt', {
+  .connect(URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
