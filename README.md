@@ -1,6 +1,14 @@
 # Crypt
 
-A secret anonymous 🕵🏻 place where you can only view your blogs 📝.
+㊙ A secret & secure place where you only can view your blogs 📝
+
+### Features 🍰
+- [X] Secure Authentication and Authorization with passport.js and express sessions
+- [X] Email verification
+- [X] Prevention from bots
+- [ ] Reset password
+- [ ] Change password
+- [ ] Filtering blogs
 
 ### How to run on your local machine?
 
@@ -19,7 +27,7 @@ MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
 SENDGRID_API - obtained from sendgrid
 SENDGRID_FROM - registered email at sendgrid
 DOMAIN_URL - your localhost port eg. http://localhost:8000
-GOOGLE_RECAPTCHA_SECRET= obtained from the Google recaptcha v2
+GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
 ```
 
 Run the project
@@ -28,7 +36,7 @@ Run the project
 npm run start
 ```
 
-### Project folder structure
+### Project folder structure 📁
 
 ```
 .
