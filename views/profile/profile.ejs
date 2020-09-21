@@ -6,7 +6,67 @@
       <a href="/blogs">Back</a>
     </div>
   </div>
-  <div class="profile">PROFILE</div>
+  <div class="profile">
+    <h2>PROFILE</h2>
+
+    <div class="basic-info">
+      <h3>Basic Info</h3>
+      <div class="user-name">
+        Name: <%= user.name %>
+      </div>
+      <div class="user-post">
+        No of blogs: <%= user.blogs.length %>
+      </div>
+      <div class="user-join">
+        Joined on: <%= date.dateFormat(user.createdAt) %>
+      </div>
+    </div>
+
+    <div class="change-password">
+      <h3>Change Password</h3>
+      <p>You can change your current password by clicking on the link below.</p>
+      <a href="/changepassword">Change Password</a>
+    </div>
+
+    <div class="delete-account">
+      <h3>Delete Account</h3>
+      <p>You can delete your account by clicking on the link below.</p>
+      <a href="javascript:void(0)" id="delete-account">Delete</a>
+    </div>
+  </div>
+
+  <div id="model-wrapper">
+    <div id="delete-model">
+      <div class="model-content">
+        Are you sure you want to delete your account?
+      </div>
+      <div>
+        <a href="/delete">YES</a>
+        <a id="cancel-model" href="javascript:void(0)">NO</a>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  const modal = document.getElementById('model-wrapper');
+  const cancel = document.getElementById('cancel-model');
+  const deleteTrigger = document.getElementById('delete-account');
+
+  deleteTrigger.onclick = () => {
+    modal.style.display = 'flex';
+  };
+
+  cancel.onclick = () => {
+    modal.style.display = 'none';
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+</script>
 
 <%- include ('../partials/footer.ejs') %>

@@ -50,16 +50,6 @@ body {
   caret-color: var(--text-links);
 }
 
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: var(--global-font-family);
-  color: var(--dark-text-primary);
-  background-color: var(--dark-bg-primary);
-  caret-color: var(--text-links);
-} */
-
 a {
   color: var(--text-links);
   text-decoration: none;
@@ -401,6 +391,25 @@ form > div {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Profile Page */
+.profile h2 {
+  margin-top: 10px;
+}
+
+.profile > div {
+  border-bottom: 1px solid gray;
+  padding: 10px 0;
+}
+
+.profile > div > h3 {
+  margin-bottom: 10px;
+}
+
+.profile > div > p {
+  margin: 5px 0;
+  color: var(--dark-text-secondary);
 }
 
 @media (max-width: 320px) {
