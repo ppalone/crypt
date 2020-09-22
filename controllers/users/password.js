@@ -1,7 +1,6 @@
 const User = require('../../models/User');
 const crypto = require('crypto');
 const sendgridService = require('../../services/sendgrid');
-const { use } = require('passport');
 
 module.exports = {
   getForgetFrom: (req, res) => res.render('./users/forget'),
@@ -14,7 +13,7 @@ module.exports = {
         return res.redirect('/users/forget');
       }
       user.passwordResetToken = crypto.randomBytes(16).toString('hex');
-      // Set the expiry time to be 5 min
+      // Set the expiry time to be 10 min
       user.passwordTokenExpirty = Date.now() + 60 * 5;
     } catch (err) {
       console.log(err);

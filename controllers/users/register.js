@@ -22,18 +22,20 @@ module.exports = {
 
       let URL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GOOGLE_RECAPTCHA_SECRET}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
 
-      let response = await axios.get(URL)
+      let response = await axios.get(URL);
 
       if (response.status !== 200) {
-        return res.render('users/register', { errors: 'Bots not allowed' })
+        return res.render('users/register', { errors: 'Bots not allowed' });
       }
 
       // Validations
       // Check if user already exists
-      let existinguser = await User.findOne({ email: req.body.email })
+      let existinguser = await User.findOne({ email: req.body.email });
 
       if (existinguser) {
-        return res.render('users/register', { errors: 'User with this email already exists' });
+        return res.render('users/register', {
+          errors: 'User with this email already exists',
+        });
       }
 
       let newuser = new User(req.body);
@@ -45,7 +47,22 @@ module.exports = {
       let savedToken = await token.save();
       // console.log(savedToken.token);
 
-      sendgridService.sendEmailVerificationMail(user.email, savedToken.token);
+      let sendgridResponse = await sendgridService.sendEmailVerificationMail(
+        user.email,
+        savedToken.token
+      );
+
+      // console.log(sendgridResponse);
+
+      if (sendgridResponse[0].statusCode !== 202) {
+        // Error with sendgrid service
+        // Remove the newly created user and token
+        await User.findByIdAndRemove({ _id: user._id });
+        await Token.findByIdAndRemove({ _id: savedToken._id });
+        return res.render('users/register', {
+          errors: 'Something wrong with the server please try later',
+        });
+      }
 
       req.flash(
         'success_msg',

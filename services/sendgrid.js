@@ -18,10 +18,10 @@ module.exports = {
     };
 
     try {
-      await sendgrid.send(template);
-      console.log('Verification email sent successfully');
+      let sendgridResponse = await sendgrid.send(template);
+      return sendgridResponse;
     } catch (err) {
-      console.log(err);
+      return err;
     }
   },
   sendPasswordResetMail: async (email, token) => {
