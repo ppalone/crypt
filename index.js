@@ -1,3 +1,5 @@
+'use strict';
+
 // dotenv
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -6,6 +8,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const favicon = require('serve-favicon');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -30,7 +34,9 @@ app.use(express.urlencoded({ extended: true }));
 // Set view engine
 app.set('view engine', 'ejs');
 // Tell express to use the public directory
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
+// Favicon
+app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
 
 app.locals.date = require('./utils/date');
 

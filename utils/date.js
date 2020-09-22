@@ -35,9 +35,9 @@ module.exports = {
     let suffix = date.getHours() < 12 ? 'AM' : 'PM';
     let mm =
       date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-    let Day = days[date.getDay()];
+    let day = days[date.getDay()];
 
-    return `${hh}:${mm} ${suffix}, ${Day}`;
+    return `${hh}:${mm} ${suffix}, ${day}`;
   },
   compareTime: (str1, str2) => {
     let date1 = new Date(str1);
