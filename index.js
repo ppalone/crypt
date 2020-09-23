@@ -17,10 +17,7 @@ const PORT = process.env.PORT || 8000;
 const forwardAuthenticated = require('./middlewares/auth').forwardAuthenticated;
 
 // Routes Handlers
-const usersHandler = require('./routes/users');
-const blogsHandler = require('./routes/blogs');
-const profileHandler = require('./routes/profile');
-const verificationHandler = require('./routes/verify');
+const routeHandler = require('./routes/index');
 
 // Mongoose Config
 require('./config/db');
@@ -75,11 +72,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', forwardAuthenticated, (req, res) => res.render('index.ejs'));
-app.use('/users', usersHandler);
-app.use('/blogs', blogsHandler);
-app.use(profileHandler);
-app.use(verificationHandler);
+app.use(routeHandler);
 
 app.get('*', (req, res) => {
   res.render('errors/404');

@@ -1,22 +1,21 @@
 <%- include ('../partials/header.ejs') %>
 <div class="container">
   <%- include ('../partials/navbar.ejs') %>
-  <div class="menu">
+  <div class="menu" style="margin-bottom: 10px">
     <div>
       <a href="/blogs">Back</a>
     </div>
   </div>
+
+  <%- include ('../users/partials/messages.ejs') %>
+
   <div class="profile">
     <h2>PROFILE</h2>
 
     <div class="basic-info">
       <h3>Basic Info</h3>
-      <div class="user-name">
-        Name: <%= user.name %>
-      </div>
-      <div class="user-post">
-        No of blogs: <%= user.blogs.length %>
-      </div>
+      <div class="user-name">Name: <%= user.name %></div>
+      <div class="user-post">No of blogs: <%= user.blogs.length %></div>
       <div class="user-join">
         Joined on: <%= date.dateFormat(user.createdAt) %>
       </div>
@@ -46,7 +45,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <script>
