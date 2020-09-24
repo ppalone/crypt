@@ -13,7 +13,12 @@ module.exports = {
       subject: 'CRYPT - Email Verification',
       text: 'Please verify your email by clicking on link below',
       html: `
-        <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a>
+        <div style="color: rgb(255, 71, 101)">
+        <h1>Crypt</h1>
+      </div>
+      <div>
+        <p>Please verify your account by clicking on the link <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a></p>
+      </div>
       `,
     };
 

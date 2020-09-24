@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Blog = require('./Blog');
 const SALT_FACTOR = 10;
 
 const UserSchema = mongoose.Schema(

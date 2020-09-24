@@ -4,7 +4,7 @@ const blogsController = require('../controllers/blogs/blogs');
 
 router.use(ensureAuthenticated);
 
-// Hack to make Delete and Edit requests from a tagss
+// Hack to make Delete and Edit requests from a tags
 router.use(function (req, res, next) {
   if (req.query._method === 'DELETE' || req.query._method === 'PATCH') {
     req.method = req.query._method;
