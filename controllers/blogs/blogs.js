@@ -1,21 +1,21 @@
-const User = require('../../models/User');
-const Blog = require('../../models/Blog');
-const mongoose = require('mongoose');
+const User = require("../../models/User");
+const Blog = require("../../models/Blog");
+const mongoose = require("mongoose");
 
 module.exports = {
   getAllBlogs: (req, res) => {
     User.findOne({ _id: req.user._id })
-      .populate('blogs')
+      .populate("blogs")
       .exec()
       .then((user) => {
         // console.log(user);
-        res.render('./blogs/blogs', {
+        res.render("./blogs/blogs", {
           blogs: user.blogs,
         });
       })
       .catch((err) => console.log(err));
   },
-  getBlogForm: (req, res) => res.render('./blogs/add'),
+  getBlogForm: (req, res) => res.render("./blogs/add"),
   createBlog: (req, res) => {
     // res.send('Save Blog to Database');
     const { title, post } = req.body;
@@ -40,7 +40,7 @@ module.exports = {
             user.blogs.push(blog._id);
             user
               .save()
-              .then(() => res.redirect('/blogs'))
+              .then(() => res.redirect("/blogs"))
               .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
@@ -49,7 +49,7 @@ module.exports = {
   },
   getBlogById: (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id))
-      return res.render('./errors/404');
+      return res.render("./errors/404");
 
     let id = req.params.id;
     User.findById(req.user._id)
@@ -60,11 +60,11 @@ module.exports = {
         let found = user.blogs.includes(id);
         // console.log(found);
         if (!found) {
-          res.render('errors/404');
+          res.render("errors/404");
         }
         Blog.findById(id)
           .then((blog) => {
-            res.render('./blogs/blog', {
+            res.render("./blogs/blog", {
               blog,
             });
           })
@@ -76,12 +76,12 @@ module.exports = {
   getEditBlog: async (req, res) => {
     try {
       let blog = await Blog.findById({ _id: req.params.id });
-      res.render('./blogs/edit', {
+      res.render("./blogs/edit", {
         blog,
       });
     } catch (err) {
       console.log(err);
-      res.send('Server Internal error');
+      res.send("Server Internal error");
     }
   },
   editBlog: async (req, res) => {
@@ -93,20 +93,20 @@ module.exports = {
       res.redirect(`/blogs/${blog._id}`);
     } catch (err) {
       console.log(err);
-      res.send('Server Internal error');
+      res.send("Server Internal error");
     }
   },
   deleteBlog: async (req, res) => {
     try {
       let blog = await Blog.findByIdAndDelete({ _id: req.params.id });
-      if (!blog) return res.send('Blog does not exist');
+      if (!blog) return res.send("Blog does not exist");
       let user = await User.findById({ _id: req.user._id });
       user.blogs.pull(req.params.id);
       await user.save();
-      res.redirect('/blogs');
+      res.redirect("/blogs");
     } catch (err) {
       console.log(err);
-      res.send('Server Internal error');
+      res.send("Server Internal error");
     }
   },
 };

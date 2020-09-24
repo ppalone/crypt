@@ -3,9 +3,10 @@
 ㊙ A secret & secure place where you only can view your blogs 📝
 
 ### Features 🍰
-- [X] Secure Authentication and Authorization with passport.js and express sessions
-- [X] Email verification
-- [X] Prevention from bots
+
+- [x] Secure Authentication and Authorization with passport.js and express sessions
+- [x] Email verification
+- [x] Prevention from bots
 - [ ] Reset password
 - [ ] Change password
 - [ ] Filtering blogs

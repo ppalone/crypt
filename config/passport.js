@@ -16,9 +16,13 @@ module.exports = (passport) => {
           user.comparePassword(password, function (err, isMatch) {
             if (err) return done(err);
             if (!isMatch)
-              return done(null, false, { message: 'Password is incorrect!' });
+              return done(null, false, {
+                message: 'Password is incorrect!',
+              });
             if (!user.isVerified)
-              return done(null, false, { message: 'Please verify your email' });
+              return done(null, false, {
+                message: 'Please verify your email',
+              });
             return done(null, user);
           });
         } catch (err) {

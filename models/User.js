@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const SALT_FACTOR = 10;
 
 const UserSchema = mongoose.Schema(
@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema(
     blogs: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Blog',
+        ref: "Blog",
       },
     ],
     expireAt: {
@@ -34,7 +34,7 @@ const UserSchema = mongoose.Schema(
     },
     passwordResetToken: {
       type: String,
-      default: '',
+      default: "",
     },
     passwordTokenExpiry: {
       type: Date,
@@ -46,11 +46,11 @@ const UserSchema = mongoose.Schema(
 /**
  * Hash password before saving
  */
-UserSchema.pre('save', function (next) {
+UserSchema.pre("save", function (next) {
   let user = this;
 
   // Password Incorrect issue resolved using this line
-  if (!user.isModified('password')) return next();
+  if (!user.isModified("password")) return next();
 
   bcrypt
     .genSalt(SALT_FACTOR)
@@ -78,4 +78,4 @@ UserSchema.methods.comparePassword = function (password, callback) {
     .catch((err) => callback(err));
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);
