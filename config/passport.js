@@ -8,11 +8,11 @@ module.exports = (passport) => {
       async (email, password, done) => {
         try {
           let user = await User.findOne({ email: email });
-          if (!user)
+          if (!user) {
             return done(null, false, {
               message: 'This Email is not registered',
             });
-
+          }
           user.comparePassword(password, function (err, isMatch) {
             if (err) return done(err);
             if (!isMatch)
@@ -28,8 +28,8 @@ module.exports = (passport) => {
         } catch (err) {
           console.log(err);
         }
-      }
-    )
+      },
+    ),
   );
   /*
    * Serialize and deserialize user

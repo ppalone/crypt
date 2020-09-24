@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --global-font-family: "PT Serif", san-serif;
+  --global-font-family: 'PT Serif', san-serif;
   --text-links: rgb(255, 71, 101);
   --dark-text-primary: #000000;
   --dark-text-secondary: #2a2a2a;
@@ -55,7 +55,7 @@ a {
   text-decoration: none;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   cursor: pointer;
   background-color: transparent;
   color: var(--dark-text-primary);

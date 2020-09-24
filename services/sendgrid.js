@@ -1,4 +1,4 @@
-const sendgrid = require("@sendgrid/mail");
+const sendgrid = require('@sendgrid/mail');
 
 // SETUP
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
@@ -10,8 +10,8 @@ module.exports = {
     let template = {
       to: email,
       from: process.env.SENDGRID_FROM,
-      subject: "CRYPT - Email Verification",
-      text: "Please verify your email by clicking on link below",
+      subject: 'CRYPT - Email Verification',
+      text: 'Please verify your email by clicking on link below',
       html: `
         <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a>
       `,
@@ -28,8 +28,8 @@ module.exports = {
     let template = {
       to: email,
       from: process.env.SENDGRID_FROM,
-      subject: "CRYPT - Password Reset",
-      text: "Please click on the link below to reset your password",
+      subject: 'CRYPT - Password Reset',
+      text: 'Please click on the link below to reset your password',
       html: `
         <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a>
       `,
@@ -37,7 +37,7 @@ module.exports = {
 
     try {
       await sendgrid.send(template);
-      console.log("Password reset email sent successfully");
+      console.log('Password reset email sent successfully');
     } catch (err) {
       console.log(err);
     }
