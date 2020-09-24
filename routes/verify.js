@@ -21,7 +21,7 @@ router.get('/verify', async (req, res) => {
       'success_msg',
       'Email verification successful now you can login!',
     );
-    return res.redirect('/users/login');
+    res.redirect('/users/login');
   } catch (err) {
     console.log(err);
     res.send('Server Internal Error');
