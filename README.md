@@ -64,16 +64,20 @@ npm run start
 ├── public
 │   ├── css
 │   │   └── style.css
+│   ├── favicon.ico
 │   └── js
 │       └── app.js
 ├── README.md
 ├── routes
 │   ├── blogs.js
+│   ├── index.js
 │   ├── profile.js
 │   ├── users.js
 │   └── verify.js
 ├── services
 │   └── sendgrid.js
+├── utils
+│   └── date.js
 └── views
     ├── blogs
     │   ├── add.ejs
@@ -88,6 +92,7 @@ npm run start
     │   ├── header.ejs
     │   └── navbar.ejs
     ├── profile
+    │   ├── changepassword.ejs
     │   └── profile.ejs
     └── users
         ├── forget.ejs
