@@ -79,7 +79,7 @@ module.exports = {
       const { password, confirmpassword } = req.body;
       if (password !== confirmpassword) {
         req.flash('error_msg', 'Passwords do not match');
-        res.redirect(`/users/reset?token=${token}`);
+        return res.redirect(`/users/reset?token=${token}`);
       }
       user.passwordResetToken = '';
       user.passwordTokenExpiry = undefined;
