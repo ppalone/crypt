@@ -7,8 +7,8 @@
 - [x] Secure Authentication and Authorization with passport.js and express sessions
 - [x] Email verification
 - [x] Prevention from bots
-- [ ] Reset password
-- [ ] Change password
+- [x] Reset password
+- [x] Change password
 - [ ] Filtering blogs
 
 ### How to run on your local machine?
@@ -35,6 +35,12 @@ Run the project
 
 ```
 npm run start
+```
+
+Format code
+
+```
+npm run format
 ```
 
 ### Project folder structure 📁
