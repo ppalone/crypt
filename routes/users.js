@@ -18,6 +18,9 @@ router
 
   .get('/logout', ensureAuthenticated, logoutController.logoutUser)
   .get('/forget', forwardAuthenticated, passwordController.getForgetFrom)
-  .post('/forget', passwordController.sendForgetToken);
+  .post('/forget', passwordController.sendForgetToken)
+
+  .get('/reset', forwardAuthenticated, passwordController.getResetPassword)
+  .post('/reset', passwordController.resetPassword);
 
 module.exports = router;

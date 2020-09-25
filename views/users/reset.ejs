@@ -1,0 +1,46 @@
+<%- include ('../partials/header.ejs') %>
+
+<div class="container">
+  <%- include ('../partials/navbar.ejs') %>
+
+  <div class="login-div">
+    <div class="login-txt">
+      <h3>RESET PASSWORD</h3>
+    </div>
+
+    <form action="/users/reset?token=<%= token %>" method="POST">
+      <%- include ('./partials/messages.ejs') %>
+      <div>
+        <label for="password">Password</label>
+      </div>
+      <div>
+        <input
+          class="login-ip"
+          type="password"
+          name="password"
+          placeholder="password"
+          autocomplete="off"
+          required
+        />
+      </div>
+      <div>
+        <label for="confirmpassword">Confirm Password</label>
+      </div>
+      <div>
+        <input
+          class="login-ip"
+          type="password"
+          name="confirmpassword"
+          placeholder="password"
+          autocomplete="off"
+          required
+        />
+      </div>
+      <div>
+        <input class="login-sub" type="submit" value="RESET PASSWORD" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include ('../partials/footer.ejs') %>

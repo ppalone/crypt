@@ -1,9 +1,6 @@
 const sendgrid = require('@sendgrid/mail');
 
-// SETUP
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-// TODO - Better error handling while sending emails to users
 
 module.exports = {
   sendEmailVerificationMail: async (email, token) => {
@@ -12,14 +9,13 @@ module.exports = {
       from: process.env.SENDGRID_FROM,
       subject: 'CRYPT - Email Verification',
       text: 'Please verify your email by clicking on link below',
-      html: `
-        <div style="color: rgb(255, 71, 101)">
-          <h1>Crypt</h1>
-        </div>
-        <div>
-          <p>Please verify your account by clicking on the link <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a></p>
-        </div>
-      `,
+      html: `<div style="color: rgb(255, 71, 101)">
+                <h1>CRYPT</h1>
+            </div>
+          <div>
+            <p>Thank you for registering on Crypt.</p>
+            <p>Please verify your account by clicking on the link <a href=${process.env.DOMAIN_URL}/verify?token=${token}>verify</a>.</p>
+        </div>`,
     };
 
     try {
@@ -35,16 +31,20 @@ module.exports = {
       from: process.env.SENDGRID_FROM,
       subject: 'CRYPT - Password Reset',
       text: 'Please click on the link below to reset your password',
-      html: `
-        <a href=${process.env.DOMAIN_URL}/verify?token=${token}>Verify</a>
-      `,
+      html: `<div style="color: rgb(255, 71, 101)">
+          <h1>CRYPT</h1>
+        </div>
+      <div>
+        <p>So, you forgot your password? Don't worry we'll help you to reset it.</p>
+        <p>Please reset your password by clicking on the link <a href=${process.env.DOMAIN_URL}/users/reset?token=${token}>reset</a>.</p>
+      </div>`,
     };
 
     try {
-      await sendgrid.send(template);
-      console.log('Password reset email sent successfully');
+      let sendgridResponse = await sendgrid.send(template);
+      return sendgridResponse;
     } catch (err) {
-      console.log(err);
+      return err;
     }
   },
 };
