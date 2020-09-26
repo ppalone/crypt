@@ -3,17 +3,11 @@ const Blog = require('../../models/Blog');
 const mongoose = require('mongoose');
 
 module.exports = {
-  getAllBlogs: (req, res) => {
-    User.findOne({ _id: req.user._id })
-      .populate('blogs')
-      .exec()
-      .then((user) => {
-        // console.log(user);
-        res.render('./blogs/blogs', {
-          blogs: user.blogs,
-        });
-      })
-      .catch((err) => console.log(err));
+  getAllBlogs: async (req, res) => {
+    let blogs = await Blog.find({ author: req.user._id }).sort({
+      createdAt: -1,
+    });
+    res.render('blogs/blogs', { blogs: blogs });
   },
   getBlogForm: (req, res) => res.render('./blogs/add'),
   createBlog: (req, res) => {

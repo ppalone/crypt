@@ -68,7 +68,7 @@ module.exports = {
   resetPassword: async (req, res) => {
     try {
       let token = req.query.token;
-      if (!token) res.redirect('/users/forget');
+      if (!token) return res.redirect('/users/forget');
       let user = await User.findOne({
         passwordResetToken: token,
         passwordTokenExpiry: { $gt: Date.now() },

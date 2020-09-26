@@ -49,22 +49,22 @@ module.exports = {
       let savedToken = await token.save();
       // console.log(savedToken.token);
 
-      let sendgridResponse = await sendgridService.sendEmailVerificationMail(
-        user.email,
-        savedToken.token,
-      );
+      // let sendgridResponse = await sendgridService.sendEmailVerificationMail(
+      //   user.email,
+      //   savedToken.token,
+      // );
 
-      // console.log(sendgridResponse);
+      // // console.log(sendgridResponse);
 
-      if (sendgridResponse[0].statusCode !== 202) {
-        // Error with sendgrid service
-        // Remove the newly created user and token
-        await User.findByIdAndRemove({ _id: user._id });
-        await Token.findByIdAndRemove({ _id: savedToken._id });
-        return res.render('users/register', {
-          errors: 'Something wrong with the server please try later',
-        });
-      }
+      // if (sendgridResponse[0].statusCode !== 202) {
+      //   // Error with sendgrid service
+      //   // Remove the newly created user and token
+      //   await User.findByIdAndRemove({ _id: user._id });
+      //   await Token.findByIdAndRemove({ _id: savedToken._id });
+      //   return res.render('users/register', {
+      //     errors: 'Something wrong with the server please try later',
+      //   });
+      // }
 
       req.flash(
         'success_msg',

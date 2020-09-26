@@ -1,6 +1,7 @@
 const themeCheckbox = document.querySelector('#theme-checkbox');
 const themeBall = document.querySelector('.ball');
 const switchTheme = document.querySelector('.switch-theme-div');
+const dropdown = document.querySelector('.dropdown');
 let theme;
 
 document.body.style.transition = 'none';
@@ -35,4 +36,8 @@ const changeTheme = () => {
     document.body.classList.remove('dark');
     themeBall.style.transform = 'translateX(0px)';
   }
+};
+
+const toggleDropdown = () => {
+  dropdown.classList.toggle('dropdown-active');
 };

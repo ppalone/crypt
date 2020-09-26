@@ -272,11 +272,53 @@ form > div {
 .blogs {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
 }
 
 #filters {
-  padding: 10px 0;
+  padding-top: 10px;
+}
+
+.filter-dropdown {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-btn {
+  flex: 2;
+  text-align: right;
+}
+
+.dropdown-btn h2 {
+  font-size: 20px;
+  font-weight: 700px;
+  padding-right: 10px;
+}
+
+.dropdown {
+  display: none;
+}
+
+.dropdown div {
+  padding: 5px 0;
+}
+
+.dropdown label {
+  display: inline-block;
+  width: 80px;
+}
+
+.dropdown input {
+  font-family: var(--global-font-family);
+  padding: 5px;
+  height: 32px;
+  color: var(--dark-text-primary);
+  background-color: var(--dark-bg-primary);
+  border: 1px solid var(--dark-text-primary);
+}
+
+.dropdown-active {
+  display: block;
 }
 
 .blog-div {
