@@ -454,6 +454,19 @@ form > div {
   color: var(--dark-text-secondary);
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+}
+
+.spacer {
+  flex: 2;
+}
+
+.pagination a {
+  padding-top: 10px;
+}
+
 @media (max-width: 320px) {
   .g-recaptcha {
     transform: scale(0.9);

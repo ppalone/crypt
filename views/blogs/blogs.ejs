@@ -55,6 +55,20 @@
     <div style="margin-top: 10px">Create one <a href="/blogs/new">here</a></div>
   </div>
   <% } %>
+
+  <div class="pagination">
+    <% if (page > 1) { %>
+    <div class="previous">
+      <a href="/blogs?page=<%= --page %>">Previous</a>
+    </div>
+    <% } %>
+    <div class="spacer"></div>
+    <% if (page <= totalPages) { %>
+    <div class="previous">
+      <a href="/blogs?page=<%= ++page %>">Next</a>
+    </div>
+    <% } %>
+  </div>
 </div>
 
 <%- include ('../partials/footer.ejs') %>

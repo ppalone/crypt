@@ -1,13 +1,27 @@
 const User = require('../../models/User');
 const Blog = require('../../models/Blog');
 const mongoose = require('mongoose');
+const PAGE_LIMIT = 5;
 
 module.exports = {
   getAllBlogs: async (req, res) => {
-    let blogs = await Blog.find({ author: req.user._id }).sort({
-      createdAt: -1,
-    });
-    res.render('blogs/blogs', { blogs: blogs });
+    let { page } = req.query;
+    if (!page) {
+      page = 1;
+    }
+    page = parseInt(page, 10);
+    let user = await User.findById({ _id: req.user._id });
+    let length = user.blogs.length;
+    let totalPages = Math.floor(length / PAGE_LIMIT) + 1;
+    console.log(totalPages);
+
+    let blogs = await Blog.find({ author: req.user._id })
+      .sort({
+        createdAt: -1,
+      })
+      .skip(PAGE_LIMIT * page - PAGE_LIMIT)
+      .limit(PAGE_LIMIT);
+    res.render('blogs/blogs', { blogs, length, totalPages, page });
   },
   getBlogForm: (req, res) => res.render('./blogs/add'),
   createBlog: (req, res) => {
