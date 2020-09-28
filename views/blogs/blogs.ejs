@@ -23,17 +23,19 @@
       </div>
     </div>
     <div class="dropdown">
-      <div>
-        <label for="fromdate">From: </label>
-        <input type="date" name="fromdate" />
-      </div>
-      <div>
-        <label for="fromdate">To: </label>
-        <input type="date" name="todate" />
-      </div>
-      <div>
-        <input type="submit" value="SEARCH" />
-      </div>
+      <form action="/blogs" method="GET">
+        <div>
+          <label for="fromdate">From: </label>
+          <input type="date" name="from" />
+        </div>
+        <div>
+          <label for="fromdate">To: </label>
+          <input type="date" name="to" />
+        </div>
+        <div>
+          <input type="submit" value="SEARCH" />
+        </div>
+      </form>
     </div>
   </div>
 
@@ -57,15 +59,15 @@
   <% } %>
 
   <div class="pagination">
-    <% if (page > 1) { %>
+    <% if (page && page > 1) { %>
     <div class="previous">
-      <a href="/blogs?page=<%= --page %>">Previous</a>
+      <a href="/blogs?page=<%= page - 1 %>">Previous</a>
     </div>
     <% } %>
     <div class="spacer"></div>
-    <% if (page <= totalPages) { %>
+    <% if (page && (page < totalPages)) { %>
     <div class="previous">
-      <a href="/blogs?page=<%= ++page %>">Next</a>
+      <a href="/blogs?page=<%= page + 1 %>">Next</a>
     </div>
     <% } %>
   </div>

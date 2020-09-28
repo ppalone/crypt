@@ -457,14 +457,15 @@ form > div {
 /* Pagination */
 .pagination {
   display: flex;
+  padding-top: 5px;
 }
 
 .spacer {
   flex: 2;
 }
 
-.pagination a {
-  padding-top: 10px;
+input[type='date'] {
+  outline: none;
 }
 
 @media (max-width: 320px) {

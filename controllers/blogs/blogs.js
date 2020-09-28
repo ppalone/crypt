@@ -5,23 +5,46 @@ const PAGE_LIMIT = 5;
 
 module.exports = {
   getAllBlogs: async (req, res) => {
-    let { page } = req.query;
-    if (!page) {
-      page = 1;
-    }
-    page = parseInt(page, 10);
+    let page;
     let user = await User.findById({ _id: req.user._id });
     let length = user.blogs.length;
     let totalPages = Math.floor(length / PAGE_LIMIT) + 1;
-    console.log(totalPages);
+    let blogs, fromDate, toDate;
 
-    let blogs = await Blog.find({ author: req.user._id })
-      .sort({
-        createdAt: -1,
+    // Check of the filters from date exist
+    if (!req.query.from && !req.query.to) {
+      // No. of blogs
+      page = req.query.page || 1;
+      page = parseInt(page, 10);
+      blogs = await Blog.find({
+        author: req.user._id,
       })
-      .skip(PAGE_LIMIT * page - PAGE_LIMIT)
-      .limit(PAGE_LIMIT);
-    res.render('blogs/blogs', { blogs, length, totalPages, page });
+        .sort({
+          createdAt: -1,
+        })
+        .skip(PAGE_LIMIT * page - PAGE_LIMIT)
+        .limit(PAGE_LIMIT);
+    } else {
+      // Date filters
+      fromDate = req.query.from || user.createdAt;
+      toDate = req.query.to || Date.now();
+      blogs = await Blog.find({
+        author: req.user._id,
+        createdAt: {
+          $gt: new Date(new Date(fromDate).setHours(00, 00, 00)),
+          $lt: new Date(new Date(toDate).setHours(23, 59, 59)),
+        },
+      });
+    }
+
+    res.render('blogs/blogs', {
+      blogs,
+      length,
+      totalPages,
+      page,
+      fromDate,
+      toDate,
+    });
   },
   getBlogForm: (req, res) => res.render('./blogs/add'),
   createBlog: (req, res) => {
