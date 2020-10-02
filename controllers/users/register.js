@@ -3,10 +3,18 @@ const Token = require('../../models/Token');
 const crypto = require('crypto');
 const axios = require('axios');
 const sendgridService = require('../../services/sendgrid');
+const { validationResult } = require('express-validator');
 
 module.exports = {
   getRegisterForm: (req, res) => res.render('./users/register'),
   registerUser: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).render('./users/register', {
+        error: errors.array()[0].msg,
+      });
+    }
     try {
       // TODO: validations on req.body
       // Check if the user have filled the captcha
