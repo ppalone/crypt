@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 8000;
 const routeHandler = require('./routes/index');
 
 // Rate limiter middleware
-const RateLimiterMiddleware = require("./middlewares/ratelimiter");
+const RateLimiterMiddleware = require('./middlewares/ratelimiter');
 
 // Mongoose Config
 require('./config/db');
@@ -41,12 +41,12 @@ app.locals.date = require('./utils/date');
 // Express Sessions
 app.use(
   session({
-    name: "crypt_sid",
+    name: 'crypt_sid',
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
     cookie: {
-      maxAge: 1000*60*60*24*30,
+      maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
       sameSite: true,
       secure: process.env.NODE_ENV === 'production',
