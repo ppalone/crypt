@@ -38,7 +38,7 @@ app.locals.date = require('./utils/date');
 // Express Sessions
 app.use(
   session({
-    secret: 'code',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
   }),
