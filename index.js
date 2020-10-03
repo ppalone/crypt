@@ -17,6 +17,9 @@ const PORT = process.env.PORT || 8000;
 // Routes Handlers
 const routeHandler = require('./routes/index');
 
+// Rate limiter middleware
+const RateLimiterMiddleware = require("./middlewares/ratelimiter");
+
 // Mongoose Config
 require('./config/db');
 
@@ -57,6 +60,8 @@ app.use(passport.session());
 
 // Connect flash
 app.use(flash());
+
+app.use(RateLimiterMiddleware);
 
 // Security
 app.use(helmet());
