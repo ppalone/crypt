@@ -64,7 +64,8 @@ app.use(flash());
 app.use(RateLimiterMiddleware);
 
 // Security
-app.use(helmet());
+// TODO: add helmet
+// app.use(helmet());
 
 // Method override
 app.use(
