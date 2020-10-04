@@ -10,11 +10,15 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const favicon = require('serve-favicon');
 const path = require('path');
+const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 // Routes Handlers
 const routeHandler = require('./routes/index');
+
+// Rate limiter middleware
+const RateLimiterMiddleware = require('./middlewares/ratelimiter');
 
 // Mongoose Config
 require('./config/db');
@@ -37,9 +41,16 @@ app.locals.date = require('./utils/date');
 // Express Sessions
 app.use(
   session({
-    secret: 'code',
+    name: 'crypt_sid',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+      sameSite: true,
+      secure: process.env.NODE_ENV === 'production',
+    },
   }),
 );
 
@@ -49,6 +60,11 @@ app.use(passport.session());
 
 // Connect flash
 app.use(flash());
+
+app.use(RateLimiterMiddleware);
+
+// Security
+app.use(helmet());
 
 // Method override
 app.use(
