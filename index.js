@@ -10,7 +10,6 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const favicon = require('serve-favicon');
 const path = require('path');
-const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
