@@ -9,7 +9,7 @@
 - [x] Prevention from bots
 - [x] Reset password
 - [x] Change password
-- [ ] Filtering blogs
+- [x] Filtering blogs
 
 ### How to run on your local machine?
 
@@ -25,10 +25,11 @@ Add your environmental variables in `.env` file
 
 ```
 MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
-SENDGRID_API - obtained from sendgrid
+SENDGRID_API_KEY - obtained from sendgrid
 SENDGRID_FROM - registered email at sendgrid
 DOMAIN_URL - your localhost port eg. http://localhost:8000
 GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
+SESSION_SECRET - a random string (Eg. 'randomsecret')
 ```
 
 Run the project
@@ -53,6 +54,8 @@ npm run format
 ├── controllers
 │   ├── blogs
 │   │   └── blogs.js
+│   ├── profile
+│   │   └── profile.js
 │   └── users
 │       ├── login.js
 │       ├── logout.js
@@ -60,7 +63,8 @@ npm run format
 │       └── register.js
 ├── index.js
 ├── middlewares
-│   └── auth.js
+│   ├── auth.js
+│   └── ratelimiter.js
 ├── models
 │   ├── Blog.js
 │   ├── Token.js
@@ -105,7 +109,8 @@ npm run format
         ├── login.ejs
         ├── partials
         │   └── messages.ejs
-        └── register.ejs
+        ├── register.ejs
+        └── reset.ejs
 ```
 
 ### Contributing 💜
