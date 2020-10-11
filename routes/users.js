@@ -15,10 +15,7 @@ router
   .post(
     '/login',
     [
-      body('email')
-        .isEmail()
-        .withMessage('Please enter a valid email')
-        .normalizeEmail(),
+      body('email').isEmail().withMessage('Please enter a valid email'),
       body('password', 'Please enter a valid password')
         .isLength({ min: 6 })
         .isAlphanumeric()
@@ -31,10 +28,7 @@ router
   .post(
     '/register',
     [
-      body('email')
-        .isEmail()
-        .withMessage('Please enter a valid email')
-        .normalizeEmail(),
+      body('email').isEmail().withMessage('Please enter a valid email'),
       body('password', 'Please enter a valid password')
         .isLength({ min: 6 })
         .isAlphanumeric()
