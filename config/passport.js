@@ -31,9 +31,8 @@ module.exports = (passport) => {
       },
     ),
   );
-  /*
-   * Serialize and deserialize user
-   */
+
+  // Serialize and Deserialize users
   passport.serializeUser((user, done) => done(null, user.id));
 
   passport.deserializeUser((id, done) => {

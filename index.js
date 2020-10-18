@@ -20,7 +20,7 @@ const routeHandler = require('./routes/index');
 const RateLimiterMiddleware = require('./middlewares/ratelimiter');
 
 // Mongoose Config
-require('./config/db');
+require('./config/database');
 
 // Passport
 require('./config/passport')(passport);
