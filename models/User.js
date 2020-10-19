@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const Blog = require('./Blog');
 const SALT_FACTOR = 10;
 
 const UserSchema = mongoose.Schema(
@@ -44,39 +43,39 @@ const UserSchema = mongoose.Schema(
   { timestamps: true },
 );
 
-/**
- * Hash password before saving
- */
-UserSchema.pre('save', function (next) {
-  let user = this;
+// Hash Password before saving
+// Note: arrow functions doesn't work in mongoose hooks cuz arrow function interpret 'this' in different way
+// Stackoverflow: https://stackoverflow.com/questions/51224695/pre-hooks-in-mongoose-model-as-es6-class
+UserSchema.pre('save', async function (next) {
+  try {
+    // this points to the user
+    let user = this;
 
-  // Password Incorrect issue resolved using this line
-  if (!user.isModified('password')) return next();
+    // If the password is not modified
+    if (!user.isModified('password')) return next();
 
-  bcrypt
-    .genSalt(SALT_FACTOR)
-    .then((salt) => {
-      bcrypt
-        .hash(user.password, salt)
-        .then((hash) => {
-          user.password = hash;
-          next();
-        })
-        .catch((err) => next(err));
-    })
-    .catch((err) => next(err));
+    let salt = await bcrypt.genSalt(SALT_FACTOR);
+    let hash = await bcrypt.hash(user.password, salt);
+
+    // Set the hashed password as user's password
+    user.password = hash;
+    next();
+  } catch (err) {
+    // Forward error
+    next(err);
+  }
 });
 
-/**
- * Add method to user schema
- */
-UserSchema.methods.comparePassword = function (password, callback) {
-  bcrypt
-    .compare(password, this.password)
-    .then((isMatch) => {
-      callback(null, isMatch);
-    })
-    .catch((err) => callback(err));
+// Add custom method to user schema
+UserSchema.methods.comparePassword = async function (password, callback) {
+  try {
+    // password - recieved from function
+    // this.password - user's current password
+    let isMatch = await bcrypt.compare(password, this.password);
+    callback(null, isMatch);
+  } catch (err) {
+    callback(err);
+  }
 };
 
 module.exports = mongoose.model('User', UserSchema);

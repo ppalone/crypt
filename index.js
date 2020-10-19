@@ -1,6 +1,6 @@
 'use strict';
 
-// dotenv
+// use dotenv if not in production
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const express = require('express');
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 const routeHandler = require('./routes/index');
 
 // Rate limiter middleware
-const RateLimiterMiddleware = require('./middlewares/ratelimiter');
+const rateLimiterMiddleware = require('./middlewares/ratelimiter');
 
 // Mongoose Config
 require('./config/database');
@@ -25,19 +25,24 @@ require('./config/database');
 // Passport
 require('./config/passport')(passport);
 
+// Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Set view engine
 app.set('view engine', 'ejs');
+
 // Tell express to use the public directory
 app.use(express.static(path.join(__dirname + '/public')));
+
 // Favicon
 app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
 
+// Utility functions to be used in templates
 app.locals.date = require('./utils/date');
 
 // Express Sessions
+// TODO: Use MongoStore or RedisStore for production
 app.use(
   session({
     name: 'crypt_sid',
@@ -54,7 +59,7 @@ app.use(passport.session());
 // Connect flash
 app.use(flash());
 
-app.use(RateLimiterMiddleware);
+app.use(rateLimiterMiddleware);
 
 // Security
 // TODO: add helmet
@@ -79,8 +84,10 @@ app.use((req, res, next) => {
   next();
 });
 
+// Routes
 app.use(routeHandler);
 
+// 404s
 app.get('*', (req, res) => {
   res.render('errors/404');
 });

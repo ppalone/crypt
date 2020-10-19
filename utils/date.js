@@ -1,6 +1,5 @@
 module.exports = {
   dateFormat: (isoString) => {
-    // console.log(isoString);
     const months = [
       'Jan',
       'Feb',
@@ -26,7 +25,6 @@ module.exports = {
   },
   // https://www.ibm.com/support/knowledgecenter/SSLVMB_sub/statistics_reference_project_ddita/spss/base/syn_date_and_time_date_time_formats.html
   timeFormat: (isoString) => {
-    // Format 12:03 AM, Thurs, 17 Sept, 2020
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
     let date = new Date(isoString);
 
