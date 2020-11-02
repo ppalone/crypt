@@ -10,6 +10,7 @@
 - [x] Reset password
 - [x] Change password
 - [x] Filtering blogs
+- [ ] Search blogs
 
 ### How to run on your local machine?
 
