@@ -12,17 +12,6 @@
   --dark-bg-primary: #ffffff;
 }
 
-/* :root {
-	--global-font-family: 'Source Serif Pro', serif;
-	--dark-bg-primary: #282c35;
-	--dark-text-primary: #ffffff;
-	--dark-text-secondary: #dadada;
-	--bg-primary: #ffffff;
-	--text-primary: #000000;
-	--text-secondary: #111111;
-	--text-links: pink;
-} */
-
 .light {
   --text-primary: #000000;
   --text-secondary: #272727;
@@ -35,11 +24,6 @@
   --bg-primary: #e4e4e4;
   --text-links: pink;
 }
-
-/* body {
-  width: 100%;
-  height: 100%;
-} */
 
 body {
   padding: 0;

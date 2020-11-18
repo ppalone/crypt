@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { body } = require('express-validator');
+// const { body } = require('express-validator');
 const loginController = require('../controllers/users/login');
 const registerController = require('../controllers/users/register');
 const logoutController = require('../controllers/users/logout');

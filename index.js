@@ -36,7 +36,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname + '/public')));
 
 // Favicon
-app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
 
 // Utility functions to be used in templates
 app.locals.date = require('./utils/date');

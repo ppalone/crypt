@@ -8,7 +8,7 @@
       <h3>LOGIN</h3>
     </div>
 
-    <form action="/users/login" method="POST">
+    <form action="/login" method="POST">
       <%- include ('./partials/messages.ejs') %>
       <div>
         <label for="email">Email</label>
@@ -38,10 +38,10 @@
       <div>
         <input class="login-sub" type="submit" value="LOGIN" />
       </div>
-      <div style="text-align: right;">
-        <a href="/users/forget">Forget Password</a>
+      <div style="text-align: right">
+        <a href="/forget">Forget Password</a>
       </div>
-      <div>Not registered yet? Register <a href="/users/register">here</a></div>
+      <div>Not registered yet? Register <a href="/register">here</a></div>
     </form>
   </div>
 </div>

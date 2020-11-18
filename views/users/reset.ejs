@@ -8,7 +8,7 @@
       <h3>RESET PASSWORD</h3>
     </div>
 
-    <form action="/users/reset?token=<%= token %>" method="POST">
+    <form action="/reset/<%= token %>" method="POST">
       <%- include ('./partials/messages.ejs') %>
       <div>
         <label for="password">Password</label>

@@ -1,5 +1,4 @@
 const passport = require('passport');
-const { validationResult } = require('express-validator');
 
 module.exports = {
   getLoginForm: (req, res) => res.render('./users/login'),
