@@ -8,8 +8,12 @@ const Token = require('../../models/Token');
 
 const sendgridService = require('../../services/sendgrid');
 
-const getLoginForm = (req, res) => res.render('./users/login');
+// @route GET /login
+// @desc Get the login form
+const getLoginForm = (req, res) => res.render('./auth/login');
 
+// @route POST /login
+// @desc verify the login credentials
 const checkLoginCredentials = (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/blogs',
@@ -18,15 +22,19 @@ const checkLoginCredentials = (req, res, next) => {
   })(req, res, next);
 };
 
-const getRegisterForm = (req, res) => res.render('./users/register');
+// @route GET /register
+// @desc Get registeration page
+const getRegisterForm = (req, res) => res.render('./auth/register');
 
+// @route POST /register
+// Register user
 const registerUser = async (req, res) => {
   try {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(422).render('./users/register', {
-        error: errors.array()[0].msg,
+      return res.status(422).render('./auth/register', {
+        errors: errors.array()[0].msg,
       });
     }
 
@@ -35,7 +43,7 @@ const registerUser = async (req, res) => {
       req.body['g-recaptcha-response'] === null ||
       req.body['g-recaptcha-response'] === ''
     ) {
-      return res.render('users/register', {
+      return res.render('./auth/register', {
         errors: 'Please select the captcha',
       });
     }
@@ -45,7 +53,7 @@ const registerUser = async (req, res) => {
     let response = await axios.get(URL);
 
     if (response.status !== 200) {
-      return res.render('users/register', {
+      return res.render('./auth/register', {
         errors: 'Bots not allowed',
       });
     }
@@ -55,7 +63,7 @@ const registerUser = async (req, res) => {
     let existinguser = await User.findOne({ email: req.body.email });
 
     if (existinguser) {
-      return res.render('users/register', {
+      return res.render('./auth/register', {
         errors: 'User with this email already exists',
       });
     }
@@ -82,7 +90,7 @@ const registerUser = async (req, res) => {
       // Remove the newly created user and token
       await User.findByIdAndRemove({ _id: user._id });
       await Token.findByIdAndRemove({ _id: savedToken._id });
-      return res.render('users/register', {
+      return res.render('./auth/register', {
         errors: 'Something wrong with the server please try later',
       });
     }
@@ -98,8 +106,9 @@ const registerUser = async (req, res) => {
   }
 };
 
+// @route GET /logout
 const logout = (req, res) => {
-  req.flash('success_mss', 'Logged out successfully!');
+  req.flash('success_msg', 'Logged out successfully!');
   req.logout();
   res.redirect('/login');
 };

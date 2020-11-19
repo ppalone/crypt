@@ -5,24 +5,11 @@
 
   <div class="login-div">
     <div class="login-txt">
-      <h3>LOGIN</h3>
+      <h3>RESET PASSWORD</h3>
     </div>
 
-    <form action="/login" method="POST">
-      <%- include ('./partials/messages.ejs') %>
-      <div>
-        <label for="email">Email</label>
-      </div>
-      <div>
-        <input
-          class="login-ip"
-          type="email"
-          name="email"
-          placeholder="email"
-          autocomplete="off"
-          required
-        />
-      </div>
+    <form action="/reset/<%= token %>" method="POST">
+      <%- include ('../partials/messages.ejs') %>
       <div>
         <label for="password">Password</label>
       </div>
@@ -32,16 +19,26 @@
           type="password"
           name="password"
           placeholder="password"
+          autocomplete="off"
           required
         />
       </div>
       <div>
-        <input class="login-sub" type="submit" value="LOGIN" />
+        <label for="confirmpassword">Confirm Password</label>
       </div>
-      <div style="text-align: right">
-        <a href="/forget">Forget Password</a>
+      <div>
+        <input
+          class="login-ip"
+          type="password"
+          name="confirmpassword"
+          placeholder="password"
+          autocomplete="off"
+          required
+        />
       </div>
-      <div>Not registered yet? Register <a href="/register">here</a></div>
+      <div>
+        <input class="login-sub" type="submit" value="RESET PASSWORD" />
+      </div>
     </form>
   </div>
 </div>

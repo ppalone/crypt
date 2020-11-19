@@ -1,5 +1,7 @@
 const User = require('../../models/User');
 
+const { validationResult } = require('express-validator');
+
 // @route GET /reset/:token
 // @desc Get the reset form
 const getResetPassword = async (req, res) => {
@@ -13,7 +15,7 @@ const getResetPassword = async (req, res) => {
     if (!user) {
       return res.send('Invalid Link or Link Expired!');
     }
-    res.render('users/reset', { token: token });
+    res.render('reset/reset', { token: token });
   } catch (err) {
     console.log(err);
     res.send('Server Internal Error');
@@ -36,10 +38,17 @@ const resetPassword = async (req, res) => {
       return res.send('Invalid Link or Link Expired!');
     }
 
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      req.flash('error_msg', errors.array()[0].msg);
+      return res.redirect(`/reset/${token}`);
+    }
+
     const { password, confirmpassword } = req.body;
     if (password !== confirmpassword) {
       req.flash('error_msg', 'Passwords do not match');
-      return res.redirect(`/reset?token=${token}`);
+      return res.redirect(`/reset/${token}`);
     }
 
     user.passwordResetToken = '';

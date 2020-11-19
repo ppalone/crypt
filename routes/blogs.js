@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const ensureAuthenticated = require('../middlewares/auth').ensureAuthenticated;
 const blogsController = require('../controllers/blogs/blogs');
+const validators = require('../validators/validators');
 
 router.use(ensureAuthenticated);
 
@@ -15,11 +16,11 @@ router.use(function (req, res, next) {
 
 router
   .get('/', blogsController.getAllBlogs)
-  .post('/', blogsController.createBlog)
-  .get('/new', blogsController.getBlogForm)
+  .post('/', validators.blogValidations(), blogsController.createBlog)
+  .get('/new', blogsController.getCreateBlog)
   .get('/:id', blogsController.getBlogById)
   .get('/:id/edit', blogsController.getEditBlog)
-  .patch('/:id/edit', blogsController.editBlog)
+  .patch('/:id/edit', validators.blogValidations(), blogsController.editBlog)
   .delete('/:id/delete', blogsController.deleteBlog);
 
 module.exports = router;

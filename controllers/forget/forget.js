@@ -1,16 +1,11 @@
 const User = require('../../models/User');
 const crypto = require('crypto');
 const sendgridService = require('../../services/sendgrid');
-
-const setExpiryTime = () => {
-  let date = new Date();
-  date.setMinutes(date.getMinutes() + 10);
-  return date;
-};
+const utils = require('../../utils/date');
 
 // @route GET /forget
 // @desc Get the forget password form
-const getForgetFrom = (req, res) => res.render('./users/forget');
+const getForgetFrom = (req, res) => res.render('forget/forget');
 
 // @route POST /forget
 // @desc Send the password forget token to the user
@@ -26,7 +21,7 @@ const sendForgetToken = async (req, res) => {
     // Generate a token
     user.passwordResetToken = crypto.randomBytes(16).toString('hex');
     // Set the expiry time to be 10 min
-    user.passwordTokenExpiry = setExpiryTime();
+    user.passwordTokenExpiry = utils.setExpiryTime();
     let savedUser = await user.save();
 
     let sendgridResponse = await sendgridService.sendPasswordResetMail(
@@ -39,7 +34,7 @@ const sendForgetToken = async (req, res) => {
       user.passwordTokenExpiry = undefined;
       await user.save();
       req.flash('error_msg', 'Error in Server, Please try again later');
-      res.redirect('/users/forget');
+      res.redirect('/forget');
     }
 
     // Everything went well

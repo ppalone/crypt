@@ -14,5 +14,3 @@ const URI = process.env.MONGO_URI;
     console.log('Error:' + err);
   }
 })();
-
-// module.exports = mongoose;
