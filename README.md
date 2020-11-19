@@ -45,23 +45,27 @@ Format code
 npm run format
 ```
 
-### Project folder structure 📁
+### Project Structure
+
+_(Follows the MVC Architecture)_
 
 ```
-.
 ├── config
-│   ├── db.js
+│   ├── database.js
 │   └── passport.js
 ├── controllers
+│   ├── auth
+│   │   └── auth.js
 │   ├── blogs
 │   │   └── blogs.js
+│   ├── forget
+│   │   └── forget.js
 │   ├── profile
 │   │   └── profile.js
-│   └── users
-│       ├── login.js
-│       ├── logout.js
-│       ├── password.js
-│       └── register.js
+│   ├── reset
+│   │   └── reset.js
+│   └── verify
+│       └── verify.js
 ├── index.js
 ├── middlewares
 │   ├── auth.js
@@ -75,21 +79,27 @@ npm run format
 ├── public
 │   ├── css
 │   │   └── style.css
-│   ├── favicon.ico
 │   └── js
 │       └── app.js
 ├── README.md
 ├── routes
+│   ├── auth.js
 │   ├── blogs.js
+│   ├── forget.js
 │   ├── index.js
 │   ├── profile.js
-│   ├── users.js
+│   ├── reset.js
 │   └── verify.js
 ├── services
 │   └── sendgrid.js
 ├── utils
 │   └── date.js
+├── validators
+│   └── validators.js
 └── views
+    ├── auth
+    │   ├── login.ejs
+    │   └── register.ejs
     ├── blogs
     │   ├── add.ejs
     │   ├── blog.ejs
@@ -97,20 +107,18 @@ npm run format
     │   └── edit.ejs
     ├── errors
     │   └── 404.ejs
+    ├── forget
+    │   └── forget.ejs
     ├── index.ejs
     ├── partials
     │   ├── footer.ejs
     │   ├── header.ejs
+    │   ├── messages.ejs
     │   └── navbar.ejs
     ├── profile
     │   ├── changepassword.ejs
     │   └── profile.ejs
-    └── users
-        ├── forget.ejs
-        ├── login.ejs
-        ├── partials
-        │   └── messages.ejs
-        ├── register.ejs
+    └── reset
         └── reset.ejs
 ```
 

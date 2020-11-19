@@ -43,4 +43,10 @@ module.exports = {
 
     return date1.getTime() === date2.getTime();
   },
+
+  setExpiryTime: () => {
+    let date = new Date();
+    date.setMinutes(date.getMinutes() + 10);
+    return date;
+  },
 };

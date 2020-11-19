@@ -36,7 +36,7 @@ module.exports = {
         </div>
       <div>
         <p>So, you forgot your password? Don't worry we'll help you to reset it.</p>
-        <p>Please reset your password by clicking on the link <a href=${process.env.DOMAIN_URL}/users/reset?token=${token}>reset</a>.</p>
+        <p>Please reset your password by clicking on the link <a href=${process.env.DOMAIN_URL}/reset/${token}>reset</a>.</p>
       </div>`,
     };
 
