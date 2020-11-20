@@ -9,17 +9,19 @@
 }
 
 .light {
-  --bg-primary: #ffffff;
+  --bg-primary: #accdff;
   --text-primary: #000000;
   --text-secondary: #2a2a2a;
-  --text-links: rgb(255, 71, 101);
+  --text-links: #003d7d;
+  --nav-bg: #8bb1ff;
 }
 
 .dark {
-  --bg-primary: #282c35;
+  --bg-primary: #253456;
   --text-primary: #ffffff;
   --text-secondary: #dadada;
-  --text-links: pink;
+  --text-links: #c0fff4;
+  --nav-bg: rgba(0, 0, 0, 30%);
 }
 
 body {
@@ -71,6 +73,7 @@ p {
 
 .welcome {
   text-align: center;
+  padding: 100px;
 }
 
 .welcome h2 {
@@ -92,20 +95,45 @@ p {
 .links div {
   margin: 10px 0;
   font-size: 20px;
+  background: var(--nav-bg);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.links div:hover {
+  background: var(--text-primary);
+}
+
+.links div:hover a {
+  color: var(--bg-primary)
 }
 
 /* Navigation Bar */
 nav {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid gray;
-  padding: 10px 0;
-  background-color: red;
+  background-color: var(--nav-bg);
+  height: 10vh;
+}
+
+.nav-header {
+  box-sizing: content-box;
+  padding: 10px;
 }
 
 .logo {
-  font-size: 40px;
+  font-size: 1.5em;
   letter-spacing: 1.5px;
+  background: rgba(117, 117, 117, 10%);
+  border-radius: 10px;
+}
+
+.logo:hover {
+  background:  rgba(117, 117, 117, 50%);
+}
+
+.logo h2 {
+  padding: 10px;
 }
 
 .spacer-div {
@@ -120,9 +148,10 @@ nav {
 }
 
 .switch-theme-div {
-  display: none;
   width: 52px;
   height: 28px;
+  box-sizing: content-box;
+  padding: 10px;
 }
 
 .switch-theme-div input {
