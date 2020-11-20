@@ -6,22 +6,19 @@
 
 :root {
   --global-font-family: 'PT Serif', san-serif;
-  --text-links: rgb(255, 71, 101);
-  --dark-text-primary: #000000;
-  --dark-text-secondary: #2a2a2a;
-  --dark-bg-primary: #ffffff;
 }
 
 .light {
+  --bg-primary: #ffffff;
   --text-primary: #000000;
-  --text-secondary: #272727;
+  --text-secondary: #2a2a2a;
+  --text-links: rgb(255, 71, 101);
 }
 
 .dark {
-  --dark-bg-primary: #282c35;
-  --dark-text-primary: #ffffff;
-  --dark-text-secondary: #dadada;
-  --bg-primary: #e4e4e4;
+  --bg-primary: #282c35;
+  --text-primary: #ffffff;
+  --text-secondary: #dadada;
   --text-links: pink;
 }
 
@@ -29,8 +26,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--global-font-family);
-  color: var(--dark-text-primary);
-  background-color: var(--dark-bg-primary);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   caret-color: var(--text-links);
 }
 
@@ -42,8 +39,8 @@ a {
 input[type='submit'] {
   cursor: pointer;
   background-color: transparent;
-  color: var(--dark-text-primary);
-  border: 1px solid var(--dark-text-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
 }
 
 input:required {
@@ -53,8 +50,8 @@ input:required {
 textarea {
   font-family: var(--global-font-family);
   background-color: transparent;
-  color: var(--dark-text-primary);
-  border: 1px solid var(--dark-text-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
 }
 
 h1,
@@ -69,7 +66,6 @@ p {
 
 /* Custom Styles */
 .container {
-  width: 60%;
   margin: 0 auto;
 }
 
@@ -83,7 +79,7 @@ p {
 }
 
 .welcome p {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
@@ -104,6 +100,7 @@ nav {
   align-items: center;
   border-bottom: 1px solid gray;
   padding: 10px 0;
+  background-color: red;
 }
 
 .logo {
@@ -201,8 +198,8 @@ form > div {
   width: 100%;
   outline: none;
   border: none;
-  color: var(--dark-text-primary);
-  border-bottom: 1px solid var(--dark-text-primary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
   background-color: transparent;
 }
 
@@ -212,29 +209,29 @@ form > div {
   font-size: 16px;
   font-family: var(--global-font-family);
   width: 100%;
-  color: var(--dark-text-primary);
+  color: var(--text-primary);
   background-color: transparent;
-  border: 1px solid var(--dark-text-primary);
+  border: 1px solid var(--text-primary);
 }
 
 ::-webkit-input-placeholder {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 ::-moz-placeholder {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 :-ms-input-placeholder {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 ::-ms-input-placeholder {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 ::placeholder {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 /* Media Queries */
@@ -296,9 +293,9 @@ form > div {
   font-family: var(--global-font-family);
   padding: 5px;
   height: 32px;
-  color: var(--dark-text-primary);
-  background-color: var(--dark-bg-primary);
-  border: 1px solid var(--dark-text-primary);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
 }
 
 .dropdown-active {
@@ -316,7 +313,7 @@ form > div {
 }
 
 .blog-div p {
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 .write-blog {
@@ -369,7 +366,7 @@ form > div {
 
 .blog-post-info {
   text-align: right;
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
   padding: 5px 0;
   font-size: 15px;
 }
@@ -390,7 +387,7 @@ form > div {
 
 #delete-model {
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
-  background-color: var(--dark-bg-primary);
+  background-color: var(--bg-primary);
   z-index: 2;
   width: 250px;
   font-size: 20px;
@@ -435,7 +432,7 @@ form > div {
 
 .profile > div > p {
   margin: 5px 0;
-  color: var(--dark-text-secondary);
+  color: var(--text-secondary);
 }
 
 /* Pagination */
