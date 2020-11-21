@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --global-font-family: 'PT Serif', san-serif;
+  --global-font-family: 'PT Sans', san-serif;
+  --secondary-font-family: 'Crete Round', var(--global-font-family);
 }
 
 .light {
@@ -121,6 +124,7 @@ nav {
   align-items: center;
   background-color: var(--nav-bg);
   height: 10vh;
+  font-family: var(--secondary-font-family);
 }
 
 .nav-header {
@@ -352,7 +356,7 @@ form > div {
 
 .blog-div h2 {
   font-size: 28px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .blog-div p {
@@ -394,7 +398,7 @@ form > div {
 /* View Blog Page */
 .blog-title h2 {
   font-size: 30px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   padding: 10px 0;
 }
 
