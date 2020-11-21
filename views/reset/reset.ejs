@@ -11,9 +11,6 @@
     <form action="/reset/<%= token %>" method="POST">
       <%- include ('../partials/messages.ejs') %>
       <div>
-        <label for="password">Password</label>
-      </div>
-      <div>
         <input
           class="login-ip"
           type="password"
@@ -24,14 +21,11 @@
         />
       </div>
       <div>
-        <label for="confirmpassword">Confirm Password</label>
-      </div>
-      <div>
         <input
           class="login-ip"
           type="password"
           name="confirmpassword"
-          placeholder="password"
+          placeholder="confirm password"
           autocomplete="off"
           required
         />

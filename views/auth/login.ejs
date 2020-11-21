@@ -1,8 +1,6 @@
 <%- include ('../partials/header.ejs') %>
 
 <div class="container">
-  
-
   <div class="login-div">
     <div class="login-txt">
       <h3>LOGIN</h3>
@@ -10,9 +8,6 @@
 
     <form action="/login" method="POST">
       <%- include ('../partials/messages.ejs') %>
-      <div>
-        <label for="email">Email</label>
-      </div>
       <div>
         <input
           class="login-ip"
@@ -22,9 +17,6 @@
           autocomplete="off"
           required
         />
-      </div>
-      <div>
-        <label for="password">Password</label>
       </div>
       <div>
         <input
