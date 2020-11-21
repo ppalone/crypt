@@ -10,6 +10,7 @@
 
 .light {
   --bg-primary: #accdff;
+  --bg-secondary: rgb(72, 106, 156);
   --text-primary: #000000;
   --text-secondary: #2a2a2a;
   --text-links: #003d7d;
@@ -18,6 +19,7 @@
 
 .dark {
   --bg-primary: #253456;
+  --bg-secondary: rgb(2, 65, 158);
   --text-primary: #ffffff;
   --text-secondary: #dadada;
   --text-links: #c0fff4;
@@ -36,6 +38,10 @@ body {
 a {
   color: var(--text-links);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-secondary)
 }
 
 input[type='submit'] {
@@ -73,7 +79,8 @@ p {
 
 .welcome {
   text-align: center;
-  padding: 100px;
+  padding: 15vh;
+  font-size: 2em;
 }
 
 .welcome h2 {
@@ -282,6 +289,11 @@ form > div {
 .blogs {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
+}
+
+.previous {
+  padding: 20px;
 }
 
 #filters {
@@ -292,6 +304,7 @@ form > div {
   cursor: pointer;
   display: flex;
   align-items: center;
+  padding: 0 20px;
 }
 
 .dropdown-btn {
@@ -329,11 +342,12 @@ form > div {
 
 .dropdown-active {
   display: block;
+  padding: 20px;
 }
 
 .blog-div {
   padding: 10px 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--bg-secondary);
 }
 
 .blog-div h2 {
@@ -353,12 +367,12 @@ form > div {
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  border-bottom: 1px solid gray;
+  width: 80%;
 }
 
 .menu div a {
   padding: 5px;
-  font-size: 18px;
+  font-size: 1.5em;
 }
 
 /* Add Post */
