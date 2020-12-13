@@ -2,7 +2,7 @@
 
 ㊙ A secret & secure place where you only can view your blogs 📝
 
-### Features 🍰
+## Features 🍰
 
 - [x] Secure Authentication and Authorization with passport.js and express sessions
 - [x] Email verification
@@ -12,42 +12,39 @@
 - [x] Filtering blogs
 - [ ] Search blogs
 
-### How to run on your local machine?
+## How to run on your local machine?
 
-Make sure you have node installed on your machine.  
-Clone the repository and install the dependenies
+- Make sure you have node installed on your machine.  
+- Clone the repository and install the dependenies.  
+    ```
+    npm install
+    ```
 
-```
-npm install
-```
+- Rename `.env.example` to `.env`
+- Add your environmental variables in `.env` file
 
-Rename `.env.example` to `.env`
-Add your environmental variables in `.env` file
+    ```
+    MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
+    SENDGRID_API_KEY - obtained from sendgrid
+    SENDGRID_FROM - registered email at sendgrid
+    DOMAIN_URL - your localhost port eg. http://localhost:8000
+    GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
+    SESSION_SECRET - a random string (Eg. 'randomsecret')
+    ```
 
-```
-MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
-SENDGRID_API_KEY - obtained from sendgrid
-SENDGRID_FROM - registered email at sendgrid
-DOMAIN_URL - your localhost port eg. http://localhost:8000
-GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
-SESSION_SECRET - a random string (Eg. 'randomsecret')
-```
+- Run the project
 
-Run the project
+    ```
+    npm run start
+    ```
 
-```
-npm run start
-```
+- Format code
 
-Format code
+    ```
+    npm run format
+    ```
 
-```
-npm run format
-```
-
-### Project Structure
-
-_(Follows the MVC Architecture)_
+## Project Structure
 
 ```
 ├── config
@@ -122,6 +119,6 @@ _(Follows the MVC Architecture)_
         └── reset.ejs
 ```
 
-### Contributing 💜
+## Contributing 💜
 
 If you find any bug or security flaws, feel free to raise an issue or make a pull request.
