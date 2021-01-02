@@ -10,14 +10,14 @@ module.exports = (passport) => {
           let user = await User.findOne({ email: email });
           if (!user) {
             return done(null, false, {
-              message: 'This Email is not registered',
+              message: 'Invalid credentials',
             });
           }
           user.comparePassword(password, function (err, isMatch) {
             if (err) return done(err);
             if (!isMatch)
               return done(null, false, {
-                message: 'Password is incorrect!',
+                message: 'Invalid credentials',
               });
             if (!user.isVerified)
               return done(null, false, {
