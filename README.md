@@ -119,6 +119,9 @@
         └── reset.ejs
 ```
 
-## Contributing 💜
+## Contributors
+<a href="https://github.com/ppalone/crypt/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ppalone/crypt" />
+</a>
 
-If you find any bug or security flaws, feel free to raise an issue or make a pull request.
+Made with [contributors-img](https://contrib.rocks).
