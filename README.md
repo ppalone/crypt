@@ -14,35 +14,36 @@
 
 ## How to run on your local machine?
 
-- Make sure you have node installed on your machine.  
-- Clone the repository and install the dependenies.  
-    ```
-    npm install
-    ```
+- Make sure you have node installed on your machine.
+- Clone the repository and install the dependenies.
+
+  ```
+  npm install
+  ```
 
 - Rename `.env.example` to `.env`
 - Add your environmental variables in `.env` file
 
-    ```
-    MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
-    SENDGRID_API_KEY - obtained from sendgrid
-    SENDGRID_FROM - registered email at sendgrid
-    DOMAIN_URL - your localhost port eg. http://localhost:8000
-    GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
-    SESSION_SECRET - a random string (Eg. 'randomsecret')
-    ```
+  ```
+  MONGO_URI - obtained from Mongodb atlas or put uri of your local mongo server
+  SENDGRID_API_KEY - obtained from sendgrid
+  SENDGRID_FROM - registered email at sendgrid
+  DOMAIN_URL - your localhost port eg. http://localhost:8000
+  GOOGLE_RECAPTCHA_SECRET - obtained from the Google recaptcha v2
+  SESSION_SECRET - a random string (Eg. 'randomsecret')
+  ```
 
 - Run the project
 
-    ```
-    npm run start
-    ```
+  ```
+  npm run start
+  ```
 
 - Format code
 
-    ```
-    npm run format
-    ```
+  ```
+  npm run format
+  ```
 
 ## Project Structure
 
@@ -120,6 +121,7 @@
 ```
 
 ## Contributors
+
 <a href="https://github.com/ppalone/crypt/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ppalone/crypt" />
 </a>
