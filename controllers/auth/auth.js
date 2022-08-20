@@ -84,6 +84,8 @@ const registerUser = async (req, res) => {
       savedToken.token,
     );
 
+    console.log('Sendgrid response: ', sendgridResponse)
+
     // If email was sent successfully it will return 202
     if (sendgridResponse[0].statusCode !== 202) {
       // Error with sendgrid service
